@@ -3,10 +3,12 @@ alias rr="rake routes"
 alias rrg="rake routes | grep "
 
 # Git
+
 alias g="git"
 alias gs="git status"
 alias ga="git add"
-alias gc="git checkout"
+alias gc="git commit"
+alias gco="git checkout"
 alias gd="git diff --color"
 alias gcd="git checkout --"
 alias grр="git reset HEAD"

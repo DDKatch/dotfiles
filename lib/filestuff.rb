@@ -1,11 +1,11 @@
 module FileStuff
   def hidden_files
     files = Dir['.*']
-    files - %w{. .. .git}
+    files - %w{. .. .git .gitignore}
   end
 
   def visible_files
-    Dir['*'] - %w{Rakefile lib}
+    Dir['*'] - %w{Rakefile lib git-config.sh}
   end
 
   def replace_file(file)

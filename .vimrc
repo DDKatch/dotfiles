@@ -10,7 +10,9 @@ set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%l\ %p
 set laststatus=2
 set noswapfile
 "set clipboard+=unnamedplus
-vmap <C-c> "+y
+vmap <C-x> :!pbcopy<CR>  
+vmap <C-c> :w !pbcopy<CR><CR> 
+" vmap <C-c> "+y
 nnoremap <C-j> :bprevious<CR>
 nnoremap <C-k> :bnext<CR>
 nnoremap <C-left> :vertical resize +3<cr>
@@ -47,6 +49,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-endwise'
 Plugin 'scrooloose/syntastic'
 Plugin 'hwartig/vim-seeing-is-believing'
+"
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'garbas/vim-snipmate'
@@ -64,6 +67,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'AndrewRadev/vim-eco'
 Plugin 'alvan/vim-closetag'
 Plugin 'rust-lang/rust.vim'
+Plugin 'mileszs/ack.vim'
 " Colorschemes
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Solarized'
@@ -85,12 +89,27 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " closetag
-let g:closetag_filenames = "*.html,*.haml,*.hamlc,*.jst,*.jst.eco,*.slim"
+let g:closetag_filenames = "*.html,*.haml,*.hamlc,*.jst,*.jst.eco,*.slim, *.erb, *.pdf"
 
 " autocomplete
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
+" let g:ycm_server_python_interpreter=2.7
 set completeopt-=preview
+
+" ===== Seeing Is Believing =====
+" Assumes you have a Ruby with SiB available in the PATH
+" If it doesn't work, you may need to `gem install seeing_is_believing -v 3.0.0.beta.6`
+" ...yeah, current release is a beta, which won't auto-install
+autocmd FileType ruby nmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+autocmd FileType ruby xmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+
+" autocmd FileType ruby nmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+" autocmd FileType ruby xmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+" autocmd FileType ruby imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+"
+" autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing-is-believing-run)
+" autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing-is-believing-run)
 
 " vimdiff configs
 :set diffopt+=vertical
