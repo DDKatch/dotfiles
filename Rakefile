@@ -1,23 +1,22 @@
 require 'rake'
-require 'erb'
+require 'pry'
 
 desc "install the dot files into user's home directory"
 task :install do
   install_oh_my_zsh
   switch_to_zsh
   replace_all = false
-  files = Dir['*'] - %w[Rakefile README.rdoc LICENSE oh-my-zsh]
-  files << "oh-my-zsh/custom/plugins/rbates"
-  files << "oh-my-zsh/custom/rbates.zsh-theme"
+  
+  files = hidden_files + visible_files
   files.each do |file|
-    system %Q{mkdir -p "$HOME/.#{File.dirname(file)}"} if file =~ /\//
-    if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
-      if File.identical? file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}")
-        puts "identical ~/.#{file.sub(/\.erb$/, '')}"
+    system %Q{mkdir -p "$HOME/#{File.dirname(file)}"} if file =~ /\//
+    if File.exist?(File.join(ENV['HOME'], "#{file.sub(/\.erb$/, '')}"))
+      if File.identical? file, File.join(ENV['HOME'], "#{file.sub(/\.erb$/, '')}")
+        puts "identical ~/#{file.sub(/\.erb$/, '')}"
       elsif replace_all
         replace_file(file)
       else
-        print "overwrite ~/.#{file.sub(/\.erb$/, '')}? [ynaq] "
+        print "overwrite ~/#{file.sub(/\.erb$/, '')}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
@@ -27,7 +26,7 @@ task :install do
         when 'q'
           exit
         else
-          puts "skipping ~/.#{file.sub(/\.erb$/, '')}"
+          puts "skipping ~/#{file.sub(/\.erb$/, '')}"
         end
       end
     else
@@ -36,23 +35,32 @@ task :install do
   end
 end
 
+def hidden_files
+  files = Dir['.*']
+  files - %w(. .. .git)
+end
+
+def visible_files
+  Dir['*'] - ['Rakefile']
+end
+
 def replace_file(file)
-  system %Q{rm -rf "$HOME/.#{file.sub(/\.erb$/, '')}"}
+  system %Q{rm -rf "$HOME/#{file.sub(/\.erb$/, '')}"}
   link_file(file)
 end
 
 def link_file(file)
-  if file =~ /.erb$/
-    puts "generating ~/.#{file.sub(/\.erb$/, '')}"
-    File.open(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"), 'w') do |new_file|
+  if file =~ /erb$/
+    puts "generating ~/#{file.sub(/\.erb$/, '')}"
+    File.open(File.join(ENV['HOME'], "#{file.sub(/\.erb$/, '')}"), 'w') do |new_file|
       new_file.write ERB.new(File.read(file)).result(binding)
     end
   elsif file =~ /zshrc$/ # copy zshrc instead of link
-    puts "copying ~/.#{file}"
-    system %Q{cp "$PWD/#{file}" "$HOME/.#{file}"}
+    puts "copying ~/#{file}"
+    system %Q{cp "$PWD/#{file}" "$HOME/#{file}"}
   else
-    puts "linking ~/.#{file}"
-    system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+    puts "linking ~/#{file}"
+    system %Q{ln -s "$PWD/#{file}" "$HOME/#{file}"}
   end
 end
 
