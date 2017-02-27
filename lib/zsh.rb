@@ -7,7 +7,7 @@ module Zsh
       case $stdin.gets.chomp
       when 'y'
         puts "switching to zsh"
-        system %Q{chsh -s `which zsh`}
+        system %Q{chsh -s /bin/zsh}
       when 'q'
         exit
       else

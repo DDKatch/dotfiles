@@ -13,7 +13,7 @@ namespace :install do
   end
   
   desc "Install zsh with oh-my-zsh extention and make it as default shell"
-  task zsh: :environment do
+  task :zsh do
     Zsh::install
     Zsh::set_default 
   end
@@ -25,7 +25,7 @@ namespace :install do
   end
   
   desc "Install the dot files into user's home directory"
-  task dotfiles: :environment do
+  task :dotfiles do
     replace_all = false
     files = hidden_files + visible_files
     files.each do |file|
