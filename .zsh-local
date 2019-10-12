@@ -16,3 +16,4 @@ export PATH="/usr/local/cuda/bin:/Applications/Shoes.app/Contents/MacOS:usr/loca
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh" # This loads NVM
 [[ -r $NVM_DIR/bash_completion ]] && source "$NVM_DIR/bash_completion"
+source $HOME/perl5/perlbrew/etc/bashrc

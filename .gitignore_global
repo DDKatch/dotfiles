@@ -1,0 +1,9 @@
+.directory
+.DS_Store
+node_modules
+
+# ctags, gtags files
+tags
+GPATH
+GTAGS
+GRTAGS

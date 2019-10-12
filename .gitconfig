@@ -1,6 +1,6 @@
 [user]
-	email = daniil.field@gmail.com
-	name = DDKatch
+	email = d.kachur@datarockets.com
+	name = Dan
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim

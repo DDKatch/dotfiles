@@ -1,3 +1,6 @@
+# NeoVim
+alias nv="nvim"
+
 # Rails
 alias rr="rake routes"
 alias rrg="rake routes | grep "
@@ -15,7 +18,10 @@ alias grр="git reset HEAD"
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold yellow)<%an>%Creset' --abbrev-commit --"
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 alias glist='for ref in $(git for-each-ref --sort=-committerdate --count=50 --format="%(refname)" refs/heads/ refs/remotes ); do git log -n1 $ref --pretty=format:"%Cgreen%cr%Creset %C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n" | cat ; done | awk '"'! a["'$0'"]++'"
-
+alias gbchanges='show_git_branch_changes()'
+show_git_branch_changes(){
+  vim -o $(git diff --name-only $(git merge-base --fork-point $1))
+}
 
 # Zeus
 alias zs='zeus server'
@@ -40,3 +46,45 @@ alias paralells='sudo rm /Library/Preferences/Parallels/licenses.xml /private/va
 # Capistrano
 alias cpd="cap production deploy"
 alias csd="cap staging deploy"
+
+# SSH
+alias to-presli-staging="ssh deployer@46.101.178.36"
+alias to-presli-production="ssh -p 2033 deployer@95.213.255.13"
+alias to-diplom-remote="ssh ubuntu@graphene-witness.westeurope.cloudapp.azure.com"
+alias to-czech-aruba="ssh -p 2033 root@94.177.199.7"
+alias to-italy-aruba="ssh -p 2033 itmist@94.177.199.7"
+
+# Grep
+alias mg="grep -R --exclude-dir=log --exclude-dir=tmp --exclude-dir=coverage"
+
+# Change branch for stage deploy
+alias stbr="vim config/deploy/staging.rb"
+alias prr="rvm use 2.2.2@presli"
+
+# Change system time
+alias apr_time="sudo date -s 2017-04-06"
+
+# change stage branch 
+alias chsb="vim config/deploy/staging.rb"
+
+#stuff
+alias mpi="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b'"
+
+#docker
+alias dlserv-presli="docker-compose run presli rails server -b 0.0.0.0 -p 3000"
+alias dlcons-presli="docker-compose run presli rails console" 
+alias dlbash-presli="docker-compose run presli bash"
+alias dlside-presli="docker-compose run presli bundle exec sidekiq"
+alias dlredi-presli="docker-compose run local-redis redis-cli"
+alias dlgems-presli="docker-compose build --no-cache presli-gems"
+# alias dltest-presli="INTEGRATION=true bundle exec rake db:drop db:create db:migrate && rspec spec/features/order_create_spec.rb"
+alias dltest-presli-bash="docker-compose run testset bash"
+alias dltest-presli-run='run_tests()'
+run_tests(){
+  # docker-compose run testset INTEGRATION=true rake db:drop db:create db:migrate && rspec $1
+  "docker-compose run testset $(INTEGRATION='true' rake db:drop db:create db:migrate && rspec $0)"
+}
+
+#android as cam through ipwebcam app
+alias cam-stream-up="ffmpeg -i http://miwebcam:kekchanskiy@10.0.0.163:8080/video -r 30 -s 1280x720 -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video0"
+alias cam-strem-check="gst-launch-1.0 -vt v4l2src device=/dev/video0 ! xvimagesink"

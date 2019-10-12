@@ -1,5 +1,5 @@
 require 'rake'
-require 'pry'
+# require 'pry'
 
 Dir['lib/*.rb'].each { |file| require_relative file }
 
