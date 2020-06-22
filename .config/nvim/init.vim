@@ -12,7 +12,6 @@ set noswapfile
 set mouse=a
 set relativenumber
 set clipboard=unnamedplus
-
 vmap <C-x> "+x <CR>
 " vmap <C-c> :w !pbcopy<CR><CR>
 vmap <C-c> "+y
@@ -22,14 +21,21 @@ nnoremap <C-left> :vertical resize +3<cr>
 nnoremap <C-down> :resize +3<cr>
 nnoremap <C-up> :resize -3<cr>
 nnoremap <C-right> :vertical resize -3<cr>
-
+nnoremap <leader>. :CtrloTag<cr>
 nnoremap ss a<space><esc>
 
 set nocompatible
 filetype off
 
 call plug#begin()
+" pug
+Plug 'digitaltoad/vim-pug'
 
+"elm
+Plug 'elmcast/elm-vim'
+
+" solidity
+Plug 'tomlion/vim-solidity'
 
 "Plugs
 Plug 'vim-scripts/Vimball'
@@ -40,39 +46,56 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
-" Linter + completer
-" Plug 'w0rp/ale'
+" GTags
+Plug 'jsfaint/gen_tags.vim'
+
+" Search
+Plug 'wsdjeg/FlyGrep.vim'
 
 "------------COMPLETER-----------------
-" (Optional) Multi-entry selection UI
-Plug 'junegunn/fzf'
-" (Completion plugin option 2)
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" JS
+Plug 'carlitux/deoplete-ternjs'
+Plug 'kchmck/vim-coffee-script'
+Plug 'pangloss/vim-javascript'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'chemzqm/vim-jsx-improve'
+" Elixir
+Plug 'slashmili/alchemist.vim' 
+" 
 
-"-------------LINTER-------------------
-"Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh'
-    \ } (Completion plugin option 1)
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/ncm-rct-complete'
+let g:deoplete#enable_at_startup = 1
 
-" Required for operations modifying multiple buffers like rename.
-set hidden
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction"}}}
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ }
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+let g:python_host_prog = '/Users/mbmist/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/mbmist/.pyenv/versions/neovim3/bin/python'
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:monster#completion#backend = 'solargraph'
+let g:deoplete#sources#omni#input_patterns = {
+\   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
+\}
 
+
+""-------------LINTER-------------------
+Plug 'w0rp/ale'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+"
 "---------------------------------------
+" solidity
+Plug 'tomlion/vim-solidity'
 " Ruby and Rails
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
@@ -83,20 +106,18 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-endwise'
 " Plug 'scrooloose/syntastic'
 Plug 'hwartig/vim-seeing-is-believing'
-" git
-" Plug 'airblade/vim-gitgutter'
-Plug 'mhinz/vim-signify'
+" Markdown
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
 "
+Plug 'posva/vim-vue'
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'garbas/vim-snipmate'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'kchmck/vim-coffee-script'
 Plug 'groenewege/vim-less'
-Plug 'pangloss/vim-javascript'
-Plug 'maksimr/vim-jsbeautify'
 Plug 'kien/ctrlp.vim'
 Plug 'slim-template/vim-slim'
 Plug 'danro/rename.vim'
@@ -118,26 +139,19 @@ filetype plugin indent on
 
 set t_Co=256
 colorscheme mustang
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
 
 " fonts airline config
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
 " closetag
 let g:closetag_filenames = "*.html,*.haml,*.hamlc,*.jst,*.jst.eco,*.slim, *.erb, *.pdf"
-" gitgutter
-" let g:gitgutter_max_signs=1000
-" nnoremap [h :GitGutterPrevHunk<Cr>
-" nnoremap ]h :GitGutterNextHunk<Cr>
-" nnoremap <Leader>guh :GitGutterUndoHunk<Cr>
 
 " autocomplete
 " let g:ycm_add_preview_to_completeopt=0
 " let g:ycm_confirm_extra_conf=0
 " let g:ycm_server_python_interpreter=2.7
-set completeopt-=preview
+" set completeopt-=preview
 
 " ===== Seeing Is Believing =====
 " Assumes you have a Ruby with SiB available in the PATH
@@ -174,8 +188,11 @@ imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
 nmap <C-e> :call JsBeautify()<cr>
 
 " CTags
-nmap <silent> <C-L> :ta <C-R><C-W><cr>
-nmap <silent> <C-G> :!ctags -R . $(bundle list --paths)<cr>
+" nmap <silent> <C-L> :ta <C-R><C-W><cr>
+" nmap <silent> <C-G> :!ctags -R . $(bundle list --paths)<cr>
+"
+" GTags
+let g:gen_tags#gtags_default_map = 1
 
 " No highlight
 nmap <silent> <C-I> :noh<cr>
@@ -189,6 +206,7 @@ let NERDTreeShowHidden=1
 let g:nerdtree_tabs_focus_on_files = 1
 let g:nerdtree_tabs_autoclose = 1
 let NERDTreeIgnore = ['\.git$', '\.DS_Store$', '\.bundle$']
+map <Leader>n :NERDTreeTabsToggle<CR>
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -250,6 +268,7 @@ map <Leader>snp :set nopaste<CR>
 nmap <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " config for https://github.com/jistr/vim-nerdtree-tabs
+nmap <leader>h <Esc>:NERDTreeTabsToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 au BufRead,BufNewFile *.hamlc set filetype=haml
@@ -257,7 +276,7 @@ au BufRead,BufNewFile *.rabl set filetype=ruby
 
 " let g:ycm_server_keep_logfiles = 1
 " let g:ycm_server_log_level = 'debug'
-" let g:ycm_server_python_interpreter = 
+" let g:ycm_server_python_interpreter =
 " Put this in vimrc or a plugin file of your own.
 " After this is configured, :ALEFix will try and fix your JS code with ESLint.
 let g:ale_fixers = {
@@ -267,4 +286,9 @@ let g:ale_fixers = {
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
 let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
+
+"markdown
+nmap <silent> <F8> <Plug>MarkdownPreview
+imap <silent> <F8> <Plug>MarkdownPreview
+nmap <silent> <F9> <Plug>StopMarkdownPreview
+imap <silent> <F9> <Plug>StopMarkdownPreview

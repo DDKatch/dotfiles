@@ -1,5 +1,0 @@
-pane	ttt	0	:zsh	0	:-	0	:/home/daniil	1	zsh	:
-pane	ttt	1	:zsh	1	:*	0	:/home/daniil	1	zsh	:
-window	ttt	0	0	:-	c07e,184x54,0,0,1
-window	ttt	1	1	:*	c07f,184x54,0,0,2
-state	ttt	
