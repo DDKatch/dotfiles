@@ -15,10 +15,20 @@ fi
 # Load ZSH aliases
 source "$HOME/.zsh-aliases"
 
-# Rbenv setup
+# Rbenv initialization
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Pyenv initialization
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 if [ -f "$HOME/.zshrc.local" ]; then
   source "$HOME/.zshrc.local"
 fi
+
+# zlib variables for compilers
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+# zlib vars for pkg-config
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
