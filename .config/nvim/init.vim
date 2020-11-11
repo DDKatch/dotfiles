@@ -1,6 +1,7 @@
 " --------------------
 " | GENERAL SETTINGS |
 " --------------------
+<<<<<<< HEAD
 
 "  plugin_manager
 call plug#begin()
@@ -110,6 +111,7 @@ let g:LanguageClient_serverCommands = {
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 "!!!   rubocop
+
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-endwise'
@@ -160,6 +162,7 @@ map <Leader>n :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_autoclose=1
 
 "  kien/ctrlp.vim
+
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
