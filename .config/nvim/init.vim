@@ -74,8 +74,6 @@ function! s:check_back_space() abort "{{{
     return !col || getline('.')[col - 1]  =~ '\s'
   endfunction"}}}
 
-
-
 "-------------LINTER-------------------
 Plug-'dense-analysis/ale'
 let g:ale_set_highlights = 0
@@ -155,7 +153,8 @@ let g:nerdtree_tabs_autoclose=1
 "  kien/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_custom_ignore = '\.git$'
