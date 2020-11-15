@@ -12,7 +12,8 @@ Plug 'flazz/vim-colorschemes'
 "  search through folder
 Plug 'dyng/ctrlsf.vim'
 "             ^--------------- An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
-
+Plug 'kien/ctrlp.vim'
+"             ^--------------- Fuzzy file, buffer, mru, tag, etc finder
 "  search through file
 set hlsearch "highlight search result"
 
@@ -152,16 +153,8 @@ map <Leader>n :NERDTreeTabsToggle<CR>
 "  jistr/vim-nerdtree-tabs
 let g:nerdtree_tabs_autoclose=1
 
-" ============================
-" ^ GENERAL PLUGINS SETTINGS ^
-" ============================
-
-" --------------------------
-" | OTHER GENERAL SETTINGS |
-" --------------------------
-
-"  find and open file by name
-let g:ctrlp_map = '<c-p>' " CtrlP
+"  kien/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window_reversed = 0
@@ -169,6 +162,6 @@ let g:ctrlp_extensions = ['tag']
 let g:ctrlp_custom_ignore = '\.git$'
 map <C-T> :CtrlPBuffer<CR>
 
-" ==========================
-" ^ OTHER GENERAL SETTINGS ^
-" ==========================
+" ============================
+" ^ GENERAL PLUGINS SETTINGS ^
+" ============================
