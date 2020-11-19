@@ -144,7 +144,7 @@ let g:NERDTreeDirArrows = 0
 let NERDTreeShowHidden=1
 let g:nerdtree_tabs_focus_on_files = 1
 let g:nerdtree_tabs_autoclose = 1
-let NERDTreeIgnore = ['\.git$', '\.DS_Store$']
+let NERDTreeIgnore = ['\.git$', '\.DS_Store$', '\.bundle$', '\.vscode$']
 map <Leader>n :NERDTreeTabsToggle<CR>
 
 "  jistr/vim-nerdtree-tabs
@@ -157,7 +157,9 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_extensions = ['tag']
-let g:ctrlp_custom_ignore = '\.git$'
+let g:ctrlp_custom_ignore = 'vendor\|node_modules\|tmp\|DS_Store\|.git'
+"                              ^           ^        ^       "
+"                             language specific folders     "
 map <C-T> :CtrlPBuffer<CR>
 
 " ============================
