@@ -31,6 +31,7 @@ set clipboard=unnamedplus
 set number
 
 "  tabs
+set expandtab "spaces instead of tab"
 set tabstop=2 "spaces amount for tab"
 set shiftwidth=2 "amount of spaces to shift using >> and << commands"
 set smartindent "use the same indent as on the line above. And some smart magic too"
@@ -59,8 +60,9 @@ filetype off
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 let g:deoplete#enable_at_startup = 1
-let g:python_host_prog = '/Users/mbmist/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/mbmist/.pyenv/versions/neovim3/bin/python'
+" https://blog.cuffaro.com/blog/2018/04/16/pyenv-neovim
+let g:python_host_prog = '$HOME/.pyenv/versions/2.7.18/envs/neovim2/bin/python'
+let g:python3_host_prog = '$HOME/.pyenv/versions/3.9.1/envs/neovim3/bin/python'
 let g:deoplete#sources#omni#input_patterns = {
 \   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
 \}
@@ -135,6 +137,8 @@ colorscheme railscasts
 nmap     <C-F>f <Plug>CtrlSFPrompt
 nmap     <C-F>n <Plug>CtrlSFCwordPath
 nmap     <C-F>p <Plug>CtrlSFPwordPath
+let g:ctrlsf_ignore_dir = ['log', 'tmp', 'node_modules', 'public']
+let g:ctrlsf_auto_focus = { "at": "start" }
 
 "  scrooloose/nerdtree
 let g:nerdtree_tabs_open_on_console_startup=1

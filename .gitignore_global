@@ -1,6 +1,7 @@
 .directory
 .DS_Store
 node_modules
+vendor/bundle
 
 # ctags, gtags files
 tags
