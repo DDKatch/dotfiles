@@ -2,7 +2,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(gitfast rbenv bundler vi-mode)
+plugins=(gitfast bundler vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Use neovim/vim as default text editor tool
@@ -15,16 +15,6 @@ fi
 # Load ZSH aliases
 source "$HOME/.zsh-aliases"
 
-# Rbenv initialization
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Pyenv initialization
-if [ "$USER" = "mbmist" ]; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
-
 if [ -f "$HOME/.zshrc.local" ]; then
   source "$HOME/.zshrc.local"
 fi
@@ -35,15 +25,5 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include"
 # zlib vars for pkg-config
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
-if [ "$USER" = "lmist" ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-  fi
-fi
-
-# nvm config
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Enable asdf
+. /usr/local/opt/asdf/asdf.sh
