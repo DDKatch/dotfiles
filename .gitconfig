@@ -1,9 +1,9 @@
 [user]
-  email = daniil.kachur@activeplatform.com
+  email = dkachur@itglue.com
   name = Daniil Kachur
 [core]
   excludesfile = ~/.gitignore_global
-  editor = vim
+  editor = nvim
 [alias]
   co = checkout
   br = branch
