@@ -61,8 +61,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 let g:deoplete#enable_at_startup = 1
 " https://blog.cuffaro.com/blog/2018/04/16/pyenv-neovim
-let g:python_host_prog = '$HOME/.pyenv/versions/2.7.18/envs/neovim2/bin/python'
-let g:python3_host_prog = '$HOME/.pyenv/versions/3.9.1/envs/neovim3/bin/python'
+let g:python_host_prog = '$HOME/.asdf/installs/python/2.7.18/bin/python'
+let g:python3_host_prog = '$HOME/.asdf/installs/python/3.9.2/bin/python'
 let g:deoplete#sources#omni#input_patterns = {
 \   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
 \}
