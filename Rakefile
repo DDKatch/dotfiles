@@ -7,15 +7,70 @@ include Zsh
 include FileStuff
 
 namespace :install do
-  desc "Install zsh, dotfiles, vim vundle"
-  task :all do
-    [:zsh, :vundle, :dotfiles].each { |t| Rake::Task["install:#{t}"].execute }
+  desc 'Install initial tools'
+  task :initial do
+    system %Q{brew install gnupg}
+    system %Q{brew install coreutils curl git}
+    system %Q{brew install asdf}
   end
-  
+
+  desc "Install neovim"
+  task :neovim do
+    puts 'installing neovim...'
+    system %Q{brew install neovim}
+  end
+
+  namespace :neovim do
+    desc 'Install plug, python, ruby, nodejs'
+    task :all do
+      %i(plug python ruby nodejs).each { |t| Rake::Task["install:neovim:#{t}"].execute }
+    end
+
+    desc "Install neovim plugin manager Plug"
+    task :plug do
+      puts 'installing Plug...'
+      system %Q{sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'}
+    end
+
+    desc "Install python with neovim packages"
+    task :python do
+      puts 'installing python..'
+      system %Q{asdf plugin-add python}
+      system %Q{asdf install python 3.9.2}
+      system %Q{asdf install python 2.7.18}
+      system %Q{asdf python global 3.9.2 2.7.18}
+      system %Q{pip2 install pynvim}
+      system %Q{pip3 install pynvim --user}
+    end
+
+    desc "Install ruby with neovim packages"
+    task :ruby do
+      puts 'installing ruby...'
+      system %Q{asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git}
+      system %Q{asdf install ruby 3.0.0}
+      system %Q{gem install neovim}
+    end
+
+    desc "Install nodejs with neovim packages"
+    task :nodejs do
+      puts 'installing nodejs...'
+      system %Q{asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git}
+      system %Q{asdf install nodejs 15.13.0}
+      system %Q{asdf global nodejs 15.13.0}
+      system %Q{brew install yarn}
+      system %Q{yarn global add neovim}
+    end
+  end
+
+  desc "Install zsh, initial, dotfiles, neovim"
+  task :all do
+    %i(zsh initial dotfiles neovim).each { |t| Rake::Task["install:#{t}"].execute }
+  end
+
   desc "Install zsh with oh-my-zsh extention and make it as default shell"
   task :zsh do
     Zsh::install
-    Zsh::set_default 
+    Zsh::set_default
   end
   
   desc "Install vim plugin manager Vundle"
