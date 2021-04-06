@@ -9,6 +9,9 @@ call plug#begin()
 Plug 'flazz/vim-colorschemes'
 "             ^--------------- one colorscheme pack to rule them all!
 
+"  search engine
+"    brew install ripgrep
+
 "  search through folder
 Plug 'dyng/ctrlsf.vim'
 "             ^--------------- An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
@@ -119,6 +122,8 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'chemzqm/vim-jsx-improve'
 "   Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"   Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " =============================
 " ^ LANGUAGE SPECIFIC PLUGINS ^
