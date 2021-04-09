@@ -1,7 +1,20 @@
+# Manjaro invisible files
 .directory
+
+# MacOS invisible files
 .DS_Store
+
+# nodejs
 node_modules
+
+# ruby
 vendor/bundle
+
+#python
+.requirements.txt
+
+# asdf
+.tool-versions
 
 # ctags, gtags files
 tags
