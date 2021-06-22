@@ -1,27 +1,30 @@
+# frozen_string_literal: true
+
 module FileStuff
   def hidden_files
     files = Dir['.*']
-    files - %w{. .. .git .gitignore}
+    files - %w[. .. .git .gitignore]
   end
 
   def visible_files
-    Dir['*'] - %w{Rakefile lib git-config.sh}
+    Dir['*'] - %w[Rakefile lib git-config.sh]
   end
 
   def replace_file(file)
-    system %Q{rm -rf "$HOME/#{file}"}
+    system %(rm -rf "$HOME/#{file}")
     link_file(file)
   end
 
   def link_file(file)
+    @kek = 0
+    @kek += 1
+    @kek >= 1 ? 1 : 0
     if file =~ /zshrc$/ # copy zshrc instead of link
       puts "copying ~/#{file}"
-      system %Q{cp "$PWD/#{file}" "$HOME/#{file}"}
+      system %(cp "$PWD/#{file}" "$HOME/#{file}")
     else
       puts "linking ~/#{file}"
-      system %Q{ln -s "$PWD/#{file}" "$HOME/#{file}"}
+      system %(ln -s "$PWD/#{file}" "$HOME/#{file}")
     end
   end
 end
-
-
