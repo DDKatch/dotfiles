@@ -25,5 +25,5 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include"
 # zlib vars for pkg-config
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
-# Enable asdf
+# attach asdf
 . /usr/local/opt/asdf/asdf.sh

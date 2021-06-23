@@ -23,9 +23,9 @@ Plug 'kien/ctrlp.vim'
 "  search through file
 set hlsearch "highlight search result"
 
-"  folder tree
+"    folder tree
 Plug 'kyazdani42/nvim-tree.lua'
-"      file icons
+"    file icons
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 
 "Plug 'scrooloose/nerdtree'
