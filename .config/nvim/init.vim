@@ -22,7 +22,8 @@ endif
 Plug 'kyazdani42/nvim-web-devicons'
 
 "  code highlight
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" ⬆️  not sure it works
 
 "  search through folder
 Plug 'dyng/ctrlsf.vim'     "An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
