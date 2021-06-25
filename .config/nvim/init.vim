@@ -133,8 +133,11 @@ call plug#end()
 " ----------------------------
 
 " hoob3rt/lualine.nvim
-
 luafile $HOME/.config/nvim/evil_lualine.lua
+
+" akinsho/nvim-bufferline.lua
+"⬇️  does not really work, IDK why
+luafile $HOME/.config/nvim/bufferline.lua
 
 " kyazdani42/nvim-tree.lua
 let g:nvim_tree_side = 'left' "left by default
@@ -197,7 +200,7 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR> "leader is a \ key by default
 nnoremap <leader>n :NvimTreeFindFile<CR>
 " a list of groups can be found at `:help nvim_tree_highlight`
 highlight NvimTreeFolderIcon guibg=blue
