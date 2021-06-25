@@ -1,6 +1,13 @@
 " --------------------
 " | GENERAL SETTINGS |
 " --------------------
+<<<<<<< HEAD
+=======
+
+set hidden "opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
+set clipboard=unnamedplus "set global clipboard buffer so it makes possible to selected text in vim and paste it somewhere else
+
+>>>>>>> Clean minor sections
 "  plugin_manager
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -11,61 +18,40 @@ if (has("termguicolors"))
 	set termguicolors  " this variable must be enabled for colors to be applied properly
 endif
 
-" code highlight
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+"  file icons
+Plug 'kyazdani42/nvim-web-devicons'
+
+"  code highlight
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 "  search through folder
-Plug 'dyng/ctrlsf.vim'
-"             ^--------------- An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
-Plug 'kien/ctrlp.vim'
-"             ^--------------- Fuzzy file, buffer, mru, tag, etc finder
+Plug 'dyng/ctrlsf.vim'     "An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
+Plug 'kien/ctrlp.vim'      "Fuzzy file, buffer, mru, tag, etc finder
 
-"  search through file
-set hlsearch "highlight search result"
-
-"    folder tree
+"  folder tree
 Plug 'kyazdani42/nvim-tree.lua'
-"    file icons
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
 
-"Plug 'scrooloose/nerdtree'
-"             ^--------------- A tree explorer plugin for vim
-"Plug 'jistr/vim-nerdtree-tabs'
-"             ^--------------- NERDTree and tabs together in Vim, painlessly
-"
+"  bottom status line
+Plug 'hoob3rt/lualine.nvim', { 'branch': 'master' }
 
-"  global clipboard buffer
-set clipboard=unnamedplus
+"  upper buffers/tabs line
+Plug 'akinsho/nvim-bufferline.lua'
 
-"  line numbers
-set number
+"!!!  git
 
-"  tabs to spaces
 set tabstop=2 "spaces amount for tab"
 set shiftwidth=2 "amount of spaces to shift using >> and << commands"
 set smartindent "use the same indent as on the line above. And some smart magic too"
-"set lcs+=space:· " visualize spaces with dots
-
-
-"  upper buffers/tabs line + bottom status line
-Plug 'hoob3rt/lualine.nvim', { 'branch': 'master' }
-
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"let g:airline#extensions#tabline#enabled = 1
-"!!!  git
-"
-set hidden
+set noswapfile " disables usage of a swapfile for the buffer (.swp files)
+set mouse=a " allow scrolling, picking, selecting with mouse?
+set ffs=unix " use unix line-ending in files
+set number "enable line numbers
+set hlsearch "highlight search in file results"
 
 " ====================
 " ^ GENERAL SETTINGS ^
 " ====================
 
-" !!!
-set noswapfile
-set mouse=a
-set ffs=unix
-" !!!
 
 "------------COMPLETER-----------------
 
@@ -90,6 +76,7 @@ function! s:check_back_space() abort "{{{
 
 
 "-------------LINTER-------------------
+
 Plug 'dense-analysis/ale'
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '>>'
@@ -138,40 +125,14 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " =============================
 " ^ LANGUAGE SPECIFIC PLUGINS ^
 " =============================
-
 call plug#end()
+
 
 " ----------------------------
 " | GENERAL PLUGINS SETTINGS |
 " ----------------------------
 
 " hoob3rt/lualine.nvim
-"let g:lualine = {
-"    \'options' : {
-"    \  'theme' : 'gruvbox',
-"    \  'section_separators' : ['', ''],
-"    \  'component_separators' : ['', ''],
-"    \  'disabled_filetypes' : [],
-"    \  'icons_enabled' : v:true,
-"    \},
-"    \'sections' : {
-"    \  'lualine_a' : [ ['mode', {'upper': v:true,},], ],
-"    \  'lualine_b' : [ ['branch', {'icon': '',}, ], ],
-"    \  'lualine_c' : [ ['filename', {'file_status': v:true,},], ],
-"    \  'lualine_x' : [ 'encoding', 'fileformat', 'filetype' ],
-"    \  'lualine_y' : [ 'progress' ],
-"    \  'lualine_z' : [ 'location'  ],
-"    \},
-"    \'inactive_sections' : {
-"    \  'lualine_a' : [  ],
-"    \  'lualine_b' : [  ],
-"    \  'lualine_c' : [ 'filename' ],
-"    \  'lualine_x' : [ 'location' ],
-"    \  'lualine_y' : [  ],
-"    \  'lualine_z' : [  ],
-"    \},
-"    \}
-"lua require("lualine").setup()
 
 luafile $HOME/.config/nvim/evil_lualine.lua
 
@@ -278,11 +239,9 @@ map <C-T> :CtrlPBuffer<CR>
 " ============================
 
 
-
 "====================
 "|  TIPS AND TRICS  |
 "====================
-
 
 "-----visualize tab with ⇥ symbol-------
 "-----(tab becomes an actual tab)-------
@@ -290,12 +249,10 @@ map <C-T> :CtrlPBuffer<CR>
 "set listchars=tab:\⇥\ ,trail:·,extends:>,precedes:<,nbsp:+
 "---------------------------------------
 
-
 "-----load local dir .vimrc file--------
 "set exrc
 "set secure
 "---------------------------------------
-
 
 "====================
 "^  TIPS AND TRICS  ^
