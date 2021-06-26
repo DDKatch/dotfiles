@@ -16,9 +16,6 @@ module FileStuff
   end
 
   def link_file(file)
-    @kek = 0
-    @kek += 1
-    @kek >= 1 ? 1 : 0
     if file =~ /zshrc$/ # copy zshrc instead of link
       puts "copying ~/#{file}"
       system %(cp "$PWD/#{file}" "$HOME/#{file}")
