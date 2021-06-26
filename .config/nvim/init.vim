@@ -70,21 +70,6 @@ endfunction
 " | LANGUAGE SPECIFIC PLUGINS |
 " -----------------------------
 
-"!!!   Ruby and Rails
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
-"!!!   rubocop
-
-Plug 'ngmy/vim-rubocop'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-endwise'
-Plug 'hwartig/vim-seeing-is-believing'
-"!!!   JS
-Plug 'carlitux/deoplete-ternjs'
-Plug 'kchmck/vim-coffee-script'
-Plug 'pangloss/vim-javascript'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'chemzqm/vim-jsx-improve'
 "   Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "   Markdown
@@ -193,7 +178,6 @@ let g:ctrlsf_ignore_dir = ['log', 'tmp', 'node_modules', 'public']
 let g:ctrlsf_auto_focus = { "at": "start" }
 
 "  kien/ctrlp.vim
-
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
