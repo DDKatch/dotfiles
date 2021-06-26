@@ -12,8 +12,8 @@ Installation details here:
 #### Installation
 I use nigtly builds(version ~> 0.5.0) which allows to use lua plugins
 
-Steps here:
-- https://github.com/neovim/neovim/releases/tag/nightly
+Steps:
+- brew install --HEAD neovim
 
 #### Run these commands to install CoC Lsp for particular languages:
 - ruby 
