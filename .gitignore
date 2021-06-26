@@ -1,7 +1,7 @@
-.config/nvim/plugged
-.config/karabiner/automatic_backups
+.config/karabiner
 .config/configstore
 .config/htop/htoprc
-.config/subfinder/config.yaml
+.config/subfinder
 .config/yarn
 .config/coc
+.config/menus
