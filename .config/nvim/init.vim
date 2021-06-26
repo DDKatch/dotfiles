@@ -1,17 +1,12 @@
 " --------------------
 " | GENERAL SETTINGS |
 " --------------------
-<<<<<<< HEAD
-
 "  plugin_manager
 call plug#begin()
 
 "  colors
 Plug 'flazz/vim-colorschemes'
 "             ^--------------- one colorscheme pack to rule them all!
-
-"  search engine
-"    brew install ripgrep
 
 "  search through folder
 Plug 'dyng/ctrlsf.vim'
@@ -156,6 +151,7 @@ let NERDTreeShowHidden=1
 let g:nerdtree_tabs_focus_on_files = 1
 let g:nerdtree_tabs_autoclose = 1
 let NERDTreeIgnore = ['\.git$', '\.DS_Store$', '\.bundle$', '\.vscode$']
+
 map <Leader>n :NERDTreeTabsToggle<CR>
 
 "  jistr/vim-nerdtree-tabs
