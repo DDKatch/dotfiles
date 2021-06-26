@@ -4,3 +4,4 @@
 .config/htop/htoprc
 .config/subfinder/config.yaml
 .config/yarn
+.config/coc

@@ -1,13 +1,10 @@
 " --------------------
 " | GENERAL SETTINGS |
 " --------------------
-<<<<<<< HEAD
-=======
 
 set hidden "opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
 set clipboard=unnamedplus "set global clipboard buffer so it makes possible to selected text in vim and paste it somewhere else
 
->>>>>>> Clean minor sections
 "  plugin_manager
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -54,50 +51,20 @@ set hlsearch "highlight search in file results"
 " ====================
 
 
-"------------COMPLETER-----------------
+"-------------LINTER + COMPLETER-------------------
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-let g:deoplete#enable_at_startup = 1
-" https://blog.cuffaro.com/blog/2018/04/16/pyenv-neovim
-let g:python_host_prog = '$HOME/.asdf/installs/python/2.7.18/bin/python'
-let g:python3_host_prog = '$HOME/.asdf/installs/python/3.9.2/bin/python'
-let g:deoplete#sources#omni#input_patterns = {
-		\   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
-		\}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction"}}}
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-
-"-------------LINTER-------------------
-
-Plug 'dense-analysis/ale'
-let g:ale_set_highlights = 0
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_fixers = {
-		\   'javascript': ['eslint'],
-		\  	'ruby': ['rubocop'],
-		\}
-let g:ale_linters_explicit = 1
-let g:airline#extensions#ale#enabled = 1
-let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 1
-
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
-"let g:LanguageClient_serverCommands = {
-"    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-"    \ }
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " -----------------------------
 " | LANGUAGE SPECIFIC PLUGINS |
@@ -137,7 +104,7 @@ call plug#end()
 luafile $HOME/.config/nvim/evil_lualine.lua
 
 " akinsho/nvim-bufferline.lua
-"⬇️  does not really work, IDK why
+"⬇️  works, but without custom settings IDK why 🤷🏻
 luafile $HOME/.config/nvim/bufferline.lua
 
 " kyazdani42/nvim-tree.lua
