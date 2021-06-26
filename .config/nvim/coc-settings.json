@@ -1,0 +1,12 @@
+{
+  "languageserver": {
+    "ruby": {
+      "command": "solargraph",
+      "trace.server": "off",
+      "filetypes": ["rb"],
+			"diagnostics": {
+				"reporters": "rubocop"
+			}
+    }
+  }
+}
