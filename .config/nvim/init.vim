@@ -97,22 +97,11 @@ call plug#end()
 " | GENERAL PLUGINS SETTINGS |
 " ----------------------------
 
-" marko-cerovac/material.nvim
 luafile $HOME/.config/nvim/nvim-treesitter.lua
-
-" nvim-treesitter/nvim-treesitter
 luafile $HOME/.config/nvim/material.lua
-
-" hoob3rt/lualine.nvim
 luafile $HOME/.config/nvim/evil_lualine.lua
-
-" akinsho/nvim-bufferline.lua
 luafile $HOME/.config/nvim/bufferline.lua
-
-" kyazdani42/nvim-tree.lua
 luafile $HOME/.config/nvim/nvim-tree.lua
-
-" lukas-reineke/indent-blankline.nvim
 luafile $HOME/.config/nvim/indent-blankline.lua
 
 " f-person/git-blame.nvim
