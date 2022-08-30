@@ -89,6 +89,8 @@ call plug#end()
 " | GENERAL PLUGINS SETTINGS |
 " ----------------------------
 
+luafile $HOME/.config/nvim/lua_plugins_config.lua
+
 " hoob3rt/lualine.nvim
 luafile $HOME/.config/nvim/evil_lualine.lua
 
