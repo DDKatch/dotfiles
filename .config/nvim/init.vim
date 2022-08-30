@@ -70,6 +70,10 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" select complete variant by pushing ENTER button
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " -----------------------------
 " | LANGUAGE SPECIFIC PLUGINS |
 " -----------------------------
