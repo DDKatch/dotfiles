@@ -3,7 +3,7 @@
 -- Author: shadmansaleh
 -- Credit: glepnir
 
-local lualine = require 'lualine.init'
+local lualine = require 'lualine'
 
 -- Color table for highlights
 local colors = {
