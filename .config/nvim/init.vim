@@ -98,6 +98,8 @@ luafile $HOME/.config/nvim/evil_lualine.lua
 "⬇️  works, but without custom settings IDK why 🤷🏻
 luafile $HOME/.config/nvim/bufferline.lua
 
+lua require 'nvim-tree'.setup {}
+
 " kyazdani42/nvim-tree.lua
 let g:nvim_tree_side = 'left' "left by default
 let g:nvim_tree_width = 25 "30 by default
