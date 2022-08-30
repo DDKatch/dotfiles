@@ -13,8 +13,7 @@ set shiftwidth=4 " size of an 'indent'
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 "  colors
-Plug 'tjdevries/colorbuddy.nvim'
-Plug 'marko-cerovac/material.nvim', { 'branch': 'colorbuddy' }
+Plug 'marko-cerovac/material.nvim'
 if (has("termguicolors"))
 	set termguicolors  " this variable must be enabled for colors to be applied properly
 endif
@@ -93,8 +92,11 @@ call plug#end()
 " | GENERAL PLUGINS SETTINGS |
 " ----------------------------
 
-" nvim-treesitter/nvim-treesitter
+" marko-cerovac/material.nvim
 luafile $HOME/.config/nvim/nvim-treesitter.lua
+
+" nvim-treesitter/nvim-treesitter
+luafile $HOME/.config/nvim/material.lua
 
 " hoob3rt/lualine.nvim
 luafile $HOME/.config/nvim/evil_lualine.lua
@@ -170,18 +172,6 @@ nnoremap <leader>r :NvimTreeRefresh<CR> "leader is a \ key by default
 nnoremap <leader>n :NvimTreeFindFile<CR>
 " a list of groups can be found at `:help nvim_tree_highlight`
 highlight NvimTreeFolderIcon guibg=blue
-
-"  marko-cerovac/material.nvim
-let g:material_style = 'deep ocean'
-let g:material_flat_ui = 1
-let g:material_italic_comments = 1
-let g:material_italic_keywords = 1
-let g:material_italic_functions = 1
-let g:material_italic_variables = 0
-let g:material_contrast = 1
-let g:material_borders = 0
-let g:material_disable_background = 0
-colorscheme material
 
 "  dyng/ctrlsf.vim
 nmap     <C-F>f <Plug>CtrlSFPrompt
