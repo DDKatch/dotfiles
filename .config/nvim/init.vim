@@ -5,9 +5,16 @@
 set hidden "opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
 set clipboard=unnamedplus "set global clipboard buffer so it makes possible to selected text in vim and paste it somewhere else
 
-set tabstop=4 " size of a hard tabstop
 set expandtab " always uses spaces instead of tab characters
-set shiftwidth=4 " size of an 'indent'
+set tabstop=2 "spaces amount for tab"
+set shiftwidth=2 "amount of spaces to shift using >> and << commands"
+set smartindent "use the same indent as on the line above. And some smart magic too"
+
+set noswapfile " disables usage of a swapfile for the buffer (.swp files)
+set mouse=a " allow scrolling, picking, selecting with mouse?
+set ffs=unix " use unix line-ending in files
+set number "enable line numbers
+set hlsearch "highlight search in file results"
 
 "  plugin_manager
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
@@ -39,14 +46,7 @@ Plug 'akinsho/nvim-bufferline.lua'
 
 "!!!  git
 
-set tabstop=2 "spaces amount for tab"
-set shiftwidth=2 "amount of spaces to shift using >> and << commands"
-set smartindent "use the same indent as on the line above. And some smart magic too"
-set noswapfile " disables usage of a swapfile for the buffer (.swp files)
-set mouse=a " allow scrolling, picking, selecting with mouse?
-set ffs=unix " use unix line-ending in files
-set number "enable line numbers
-set hlsearch "highlight search in file results"
+
 
 " ====================
 " ^ GENERAL SETTINGS ^
