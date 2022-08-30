@@ -1,3 +1,7 @@
+" TODO Make lualine clean and informative
+" TODO Add go to definition
+" TODO Migrate to LSP instead of CoC
+
 " --------------------
 " | GENERAL SETTINGS |
 " --------------------
@@ -15,6 +19,11 @@ set mouse=a " allow scrolling, picking, selecting with mouse?
 set ffs=unix " use unix line-ending in files
 set number "enable line numbers
 set hlsearch "highlight search in file results"
+
+"paste above cursor line
+nmap p :pu!<CR>
+"paste below cursor line (as usual)
+nmap pp :pu<CR>
 
 luafile $HOME/.config/nvim/general.lua
 
@@ -51,7 +60,6 @@ Plug 'akinsho/nvim-bufferline.lua'
 
 " git
 Plug 'f-person/git-blame.nvim'
-
 
 
 " ====================
