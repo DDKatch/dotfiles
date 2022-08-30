@@ -101,7 +101,6 @@ luafile $HOME/.config/nvim/material.lua
 luafile $HOME/.config/nvim/evil_lualine.lua
 
 " akinsho/nvim-bufferline.lua
-"⬇️  works, but without custom settings IDK why 🤷🏻
 luafile $HOME/.config/nvim/bufferline.lua
 
 " kyazdani42/nvim-tree.lua
