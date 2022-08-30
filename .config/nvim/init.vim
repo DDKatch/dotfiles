@@ -16,6 +16,8 @@ set ffs=unix " use unix line-ending in files
 set number "enable line numbers
 set hlsearch "highlight search in file results"
 
+luafile $HOME/.config/nvim/general.lua
+
 "  plugin_manager
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -30,6 +32,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 "  code highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" indentation highlight
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 "  search through folder
 Plug 'dyng/ctrlsf.vim'     "An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
@@ -106,6 +111,9 @@ luafile $HOME/.config/nvim/bufferline.lua
 
 " kyazdani42/nvim-tree.lua
 luafile $HOME/.config/nvim/nvim-tree.lua
+
+" lukas-reineke/indent-blankline.nvim
+luafile $HOME/.config/nvim/indent-blankline.lua
 
 " f-person/git-blame.nvim
 let g:gitblame_message_template = '         <sha> • <summary> • <author> • <date>'
