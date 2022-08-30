@@ -93,7 +93,8 @@ call plug#end()
 " | GENERAL PLUGINS SETTINGS |
 " ----------------------------
 
-luafile $HOME/.config/nvim/lua_plugins_config.lua
+" nvim-treesitter/nvim-treesitter
+luafile $HOME/.config/nvim/nvim-treesitter.lua
 
 " hoob3rt/lualine.nvim
 luafile $HOME/.config/nvim/evil_lualine.lua
