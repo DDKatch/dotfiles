@@ -44,7 +44,8 @@ Plug 'hoob3rt/lualine.nvim', { 'branch': 'master' }
 "  upper buffers/tabs line
 Plug 'akinsho/nvim-bufferline.lua'
 
-"!!!  git
+" git
+Plug 'f-person/git-blame.nvim'
 
 
 
@@ -105,6 +106,10 @@ luafile $HOME/.config/nvim/bufferline.lua
 
 " kyazdani42/nvim-tree.lua
 luafile $HOME/.config/nvim/nvim-tree.lua
+
+" f-person/git-blame.nvim
+let g:gitblame_message_template = '         <sha> • <summary> • <author> • <date>'
+let g:gitblame_date_format = '%r'
 
 "  dyng/ctrlsf.vim
 nmap     <C-F>f <Plug>CtrlSFPrompt
