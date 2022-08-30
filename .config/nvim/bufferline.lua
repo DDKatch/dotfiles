@@ -9,7 +9,10 @@ options = {
 	-- NOTE: this plugin is designed with this icon in mind,
 	-- and so changing this is NOT recommended, this is intended
 	-- as an escape hatch for people who cannot bear it for whatever reason
-	indicator_icon = '▎',
+	indicator = {
+    icon = '▎',
+    style = 'icon',
+  },
 	buffer_close_icon = '',
 	modified_icon = '●',
 	close_icon = '',
@@ -18,7 +21,7 @@ options = {
 	max_name_length = 18,
 	max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
 	tab_size = 18,
-	diagnostics = "nvim_lsp", -- | false
+	diagnostics = "coc", -- false | "nvim_lsp" | "coc"
 	diagnostics_indicator = function(count, level, diagnostics_dict, context)
 		return "("..count..")"
 	end,
@@ -38,9 +41,18 @@ options = {
 			return true
 		end
 	end,
-	offsets = {{filetype = "NvimTree", text = "Nvim Tree", text_align = "left"}}, -- | "center" | "right"}},
+	offsets = {
+    {
+      filetype = "NvimTree",
+      text = "Nvim Tree", -- "File Explorer" | function 
+      text_align = "left",  -- | "center" | "right"}},
+      separator = true
+    }
+  },
+  color_icons = true, -- | false, -- whether or not to add the filetype icon highlights
 	show_buffer_icons = true, -- | false, -- disable filetype icons for buffers
 	show_buffer_close_icons = true, -- | false,
+  show_buffer_default_icon = true, -- | false, -- whether or not an unrecognised filetype should show a default icon
 	show_close_icon = true, -- | false,
 	show_tab_indicators = true, -- | false,
 	persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
@@ -49,10 +61,7 @@ options = {
 	separator_style = "slant", -- | "slant" | "thick" | "thin" | { 'any', 'any' },
 	enforce_regular_tabs = false, -- | true,
 	always_show_bufferline = true, -- | false,
-	sort_by = 'relative_directory', -- | 'extension' | 'directory' | 
-		 -- function(buffer_a, buffer_b)
-		 --   return buffer_a.modified > buffer_b.modified
-		 -- end
+	sort_by = 'relative_directory', -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)}
 }
 
-require('bufferline').setup(options)
+require('bufferline').setup({ options = options })
