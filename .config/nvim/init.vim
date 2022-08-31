@@ -69,22 +69,31 @@ Plug 'f-person/git-blame.nvim'
 
 "-------------LINTER + COMPLETER-------------------
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" select complete variant by pushing ENTER button
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
-				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
+"inoremap <silent><expr> <TAB>
+"      \ coc#pum#visible() ? coc#pum#next(1) :
+"      \ CheckBackspace() ? "\<Tab>" :
+"      \ coc#refresh()
+"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"
+"function! CheckBackspace() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+"
+"" select complete variant by pushing ENTER button
+"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+"				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " -----------------------------
 " | LANGUAGE SPECIFIC PLUGINS |
@@ -111,6 +120,7 @@ luafile $HOME/.config/nvim/evil_lualine.lua
 luafile $HOME/.config/nvim/bufferline.lua
 luafile $HOME/.config/nvim/nvim-tree.lua
 luafile $HOME/.config/nvim/indent-blankline.lua
+luafile $HOME/.config/nvim/lsps.lua
 
 " f-person/git-blame.nvim
 let g:gitblame_message_template = '         <sha> • <summary> • <author> • <date>'
