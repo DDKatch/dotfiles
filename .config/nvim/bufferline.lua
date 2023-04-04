@@ -21,7 +21,7 @@ options = {
 	max_name_length = 18,
 	max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
 	tab_size = 18,
-	diagnostics = "coc", -- false | "nvim_lsp" | "coc"
+	diagnostics = "nvim_lsp", -- false | "nvim_lsp" | "coc"
 	diagnostics_indicator = function(count, level, diagnostics_dict, context)
 		return "("..count..")"
 	end,
