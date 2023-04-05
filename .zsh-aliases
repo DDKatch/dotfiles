@@ -1,4 +1,5 @@
 # NeoVim
+alias nvim="exec /Users/$USER/Workspace/Tools/nvim-macos/bin/nvim"
 alias nv="nvim"
 
 # Rails
