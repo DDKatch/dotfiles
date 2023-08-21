@@ -20,6 +20,24 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end,
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -47,15 +65,15 @@ end)
 
 local map = require('utils').map
 
-map('n', ']', ':lua vim.lsp.buf.definition()<cr>')
-map('n', '[', ':e#<cr>') -- get back to prev opened file
-map('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>')
-map('n', 'gi', ':lua vim.lsp.buf.implementation()<cr>')
-map('n', 'gw', ':lua vim.lsp.buf.document_symbol()<cr>')
-map('n', 'gw', ':lua vim.lsp.buf.workspace_symbol()<cr>')
-map('n', 'gr', ':lua vim.lsp.buf.references()<cr>')
-map('n', 'gt', ':lua vim.lsp.buf.type_definition()<cr>')
-map('n', 'K', ':lua vim.lsp.buf.hover()<cr>')
-map('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
-map('n', '<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
-map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
+map('n', '>', ':lua vim.lsp.buf.definition()<cr>')
+map('n', '<', ':e#<cr>') -- get back to prev opened file
+--map('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>')
+--map('n', 'gi', ':lua vim.lsp.buf.implementation()<cr>')
+--map('n', 'gw', ':lua vim.lsp.buf.document_symbol()<cr>')
+--map('n', 'gw', ':lua vim.lsp.buf.workspace_symbol()<cr>')
+--map('n', 'gr', ':lua vim.lsp.buf.references()<cr>')
+--map('n', 'gt', ':lua vim.lsp.buf.type_definition()<cr>')
+--map('n', 'K', ':lua vim.lsp.buf.hover()<cr>')
+--map('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
+--map('n', '<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
+--map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
