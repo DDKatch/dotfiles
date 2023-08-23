@@ -77,25 +77,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
-" Allows use autocomplete by pressing TAB. Used in lsps.lua
+" Allows using autocomplete by pressing TAB. Used in lsps.lua
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.0.0', 'do': 'make install_jsregexp'}
-
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"
-"inoremap <silent><expr> <TAB>
-"      \ coc#pum#visible() ? coc#pum#next(1) :
-"      \ CheckBackspace() ? "\<Tab>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-"
-"function! CheckBackspace() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-"
-"" select complete variant by pushing ENTER button
-"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
-"				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " -----------------------------
 " | LANGUAGE SPECIFIC PLUGINS |
@@ -110,7 +93,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " ^ LANGUAGE SPECIFIC PLUGINS ^
 " =============================
 call plug#end()
-
 
 " ----------------------------
 " | GENERAL PLUGINS SETTINGS |
@@ -129,9 +111,9 @@ let g:gitblame_message_template = '         <sha> • <summary> • <author> •
 let g:gitblame_date_format = '%r'
 
 "  dyng/ctrlsf.vim
-nmap     <C-F>f <Plug>CtrlSFPrompt
-nmap     <C-F>n <Plug>CtrlSFCwordPath
-nmap     <C-F>p <Plug>CtrlSFPwordPath
+nmap <C-F>f <Plug>CtrlSFPrompt
+nmap <C-F>n <Plug>CtrlSFCwordPath
+nmap <C-F>p <Plug>CtrlSFPwordPath
 let g:ctrlsf_ignore_dir = ['log', 'tmp', 'node_modules', 'public', '.git', 'public']
 let g:ctrlsf_auto_focus = { "at": "start" }
 
