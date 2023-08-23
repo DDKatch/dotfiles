@@ -77,7 +77,6 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
-
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 "inoremap <silent><expr> <TAB>
@@ -144,6 +143,34 @@ let g:ctrlp_custom_ignore = 'vendor\|node_modules\|tmp\|DS_Store\|.git'
 "                              ^           ^        ^       "
 "                             language specific folders     "
 map <C-T> :CtrlPBuffer<CR>
+
+"set incsearch
+"set hlsearch " Highlight search result
+"highlight Search ctermbg=LightYellow ctermfg=Red cterm=bold,italic guibg=LightYellow guifg=Red gui=bold,italic
+"
+set cursorline
+"set backspace=indent,eol,start
+"set matchpairs+=<:>
+"highlight MatchParen ctermbg=green ctermfg=blue guibg=green guifg=blue
+"
+"" Code fold setting: za: on/off current fold, zM: off all folds, zR: on all folds
+"set foldmethod=syntax
+"set nofoldenable " on/off
+"
+"set colorcolumn=80 " The code width line
+highlight ColorColumn ctermbg=DarkGray guibg=LightGray
+highlight clear SpellBad
+highlight SpellBad cterm=underline,italic gui=underline,italic
+
+set smartcase
+
+" Backup config
+set backup
+set backupdir=~/.nvim/backup/
+set writebackup " Make backup before overwriting the current buffer
+set backupcopy=yes " Overwrite the original backup file
+" The backup file name, e.g. filename@2015-04-05.14:59
+au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
 
 " ============================
 " ^ GENERAL PLUGINS SETTINGS ^
