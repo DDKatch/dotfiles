@@ -77,6 +77,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+" Allows use autocomplete by pressing TAB. Used in lsps.lua
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.0.0', 'do': 'make install_jsregexp'}
+
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 "inoremap <silent><expr> <TAB>
