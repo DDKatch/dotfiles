@@ -65,8 +65,8 @@ end)
 
 local map = require('utils').map
 
-map('n', '>', ':lua vim.lsp.buf.definition()<cr>')
-map('n', '<', ':e#<cr>') -- get back to prev opened file
+map('n', ']', ':lua vim.lsp.buf.definition()<cr>')
+map('n', '[', ':e#<cr>') -- get back to prev opened file
 --map('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>')
 --map('n', 'gi', ':lua vim.lsp.buf.implementation()<cr>')
 --map('n', 'gw', ':lua vim.lsp.buf.document_symbol()<cr>')
