@@ -1,6 +1,6 @@
-" TODO Migrate to LSP instead of CoC
-" TODO change autocomplete window selected item background color
-" TODO Add go to definition plugin
+" TODO Migrate to LSP instead of CoC ✅
+" TODO change autocomplete window selected item background color 
+" TODO Add go to definition plugin ✅
 
 " --------------------
 " | GENERAL SETTINGS |
@@ -61,6 +61,8 @@ Plug 'akinsho/nvim-bufferline.lua'
 " git
 Plug 'f-person/git-blame.nvim'
 
+" commenting code
+Plug 'numToStr/Comment.nvim'
 
 " ====================
 " ^ GENERAL SETTINGS ^
@@ -156,6 +158,9 @@ set writebackup " Make backup before overwriting the current buffer
 set backupcopy=yes " Overwrite the original backup file
 " The backup file name, e.g. filename@2015-04-05.14:59
 au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
+
+" numToStr/Comment.nvim
+lua require('Comment').setup()
 
 " ============================
 " ^ GENERAL PLUGINS SETTINGS ^
