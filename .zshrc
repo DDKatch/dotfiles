@@ -20,7 +20,7 @@ if [ -f "$HOME/.zshrc.local" ]; then
 fi
 
 # zlib variables for compilers
-export LDFLAGS="-L '/usr/local/opt/zlib/lib'"
+export LDFLAGS="-L'/usr/local/opt/zlib/lib'"
 export CPPFLAGS="-I '/usr/local/opt/zlib/include'"
 # zlib vars for pkg-config
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"

@@ -89,3 +89,4 @@ run_tests(){
 #android as cam through ipwebcam app
 alias cam-stream-up="ffmpeg -i http://miwebcam:kekchanskiy@10.0.0.163:8080/video -r 30 -s 1280x720 -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video0"
 alias cam-strem-check="gst-launch-1.0 -vt v4l2src device=/dev/video0 ! xvimagesink"
+alias bong="afplay /System/Library/Sounds/Submarine.aiff -v 3"
