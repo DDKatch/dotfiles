@@ -100,6 +100,7 @@ call plug#end()
 " | GENERAL PLUGINS SETTINGS |
 " ----------------------------
 
+luafile $HOME/.config/nvim/automatic_trailing_whitespace.lua
 luafile $HOME/.config/nvim/nvim-treesitter.lua
 luafile $HOME/.config/nvim/material.lua
 luafile $HOME/.config/nvim/evil_lualine.lua
@@ -107,6 +108,8 @@ luafile $HOME/.config/nvim/bufferline.lua
 luafile $HOME/.config/nvim/nvim-tree.lua
 luafile $HOME/.config/nvim/indent-blankline.lua
 luafile $HOME/.config/nvim/lsps.lua
+luafile $HOME/.config/nvim/json.lua
+luafile $HOME/.config/nvim/disable-terminal-autoclose.lua
 
 " f-person/git-blame.nvim
 let g:gitblame_message_template = '         <sha> • <summary> • <author> • <date>'

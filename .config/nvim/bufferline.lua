@@ -52,16 +52,23 @@ options = {
   color_icons = true, -- | false, -- whether or not to add the filetype icon highlights
 	show_buffer_icons = true, -- | false, -- disable filetype icons for buffers
 	show_buffer_close_icons = true, -- | false,
-  show_buffer_default_icon = true, -- | false, -- whether or not an unrecognised filetype should show a default icon
-	show_close_icon = true, -- | false,
-	show_tab_indicators = true, -- | false,
-	persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-	-- can also be a table containing 2 custom separators
-	-- [focused and unfocused]. eg: { '|', '|' }
-	separator_style = "slant", -- | "slant" | "thick" | "thin" | { 'any', 'any' },
-	enforce_regular_tabs = false, -- | true,
-	always_show_bufferline = true, -- | false,
-	sort_by = 'relative_directory', -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)}
+  get_element_icon = function(element)
+    -- element consists of {filetype: string, path: string, extension: string, directory: string}
+    -- This can be used to change how bufferline fetches the icon
+    -- for an element e.g. a buffer or a tab.
+    -- e.g.
+    local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(element.filetype, { default = false })
+    return icon, hl
+  end,
+  show_close_icon = true, -- | false,
+  show_tab_indicators = true, -- | false,
+  persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+  -- can also be a table containing 2 custom separators
+  -- [focused and unfocused]. eg: { '|', '|' }
+  separator_style = "slant", -- | "slant" | "thick" | "thin" | { 'any', 'any' },
+  enforce_regular_tabs = false, -- | true,
+  always_show_bufferline = true, -- | false,
+  sort_by = 'relative_directory', -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)}
 }
 
 require('bufferline').setup({ options = options })
