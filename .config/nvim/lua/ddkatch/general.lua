@@ -18,11 +18,11 @@ vim.api.nvim_command("set number") -- enable line numbers
 vim.api.nvim_command("set hlsearch") -- highlight search in file results
 vim.api.nvim_command("set cursorline")
 vim.api.nvim_command("set smartcase")
--- Backup config
-vim.api.nvim_command("set backup")
-vim.api.nvim_command("set backupdir='~/.nvim/backup/'")
-vim.api.nvim_command("set writebackup") -- Make backup before overwriting the current buffer
-vim.api.nvim_command("set backupcopy=yes") -- Overwrite the original backup file
+-- Backup config 🔴 doesnt work
+-- vim.api.nvim_command("set backup")
+-- vim.api.nvim_command("set backupdir='~/.nvim/backup/'")
+-- vim.api.nvim_command("set writebackup") -- Make backup before overwriting the current buffer
+-- vim.api.nvim_command("set backupcopy=yes") -- Overwrite the original backup file
 vim.api.nvim_command("au BufWritePre * let &bex = '@' . strftime('%F.%H:%M')") -- 🔴 don't know what is this about
 vim.g.mapleader = ' '
 
