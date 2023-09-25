@@ -24,10 +24,9 @@ vim.api.nvim_command("set backupdir='~/.nvim/backup/'")
 vim.api.nvim_command("set writebackup") -- Make backup before overwriting the current buffer
 vim.api.nvim_command("set backupcopy=yes") -- Overwrite the original backup file
 vim.api.nvim_command("au BufWritePre * let &bex = '@' . strftime('%F.%H:%M')") -- 🔴 don't know what is this about
+vim.g.mapleader = ' '
 
 -- 🔴 I think it doesn't work
-vim.api.nvim_command("highlight ColorColumn ctermbg=DarkGray guibg=LightGray")
+vim.api.nvim_command("highlight ColorColumn ctermbg=DarkGray guibg=Black")
 vim.api.nvim_command("highlight clear SpellBad")
 vim.api.nvim_command("highlight SpellBad cterm=underline,italic gui=underline,italic")
-
-vim.api.nvim_set_keymap('n', "<C-T>", ":CtrlPBuffer<CR>", { noremap = true })
