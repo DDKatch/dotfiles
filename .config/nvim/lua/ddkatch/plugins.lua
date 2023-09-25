@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
   use { 'kyazdani42/nvim-web-devicons' }
 
   --  code highlight
-  use { 'nvim-treesitter/nvim-treesitter', branch = "master" }
+  use { 'nvim-treesitter/nvim-treesitter', branch = "master", run=':TSUpdate' }
 
   -- indentation highlight
   use { 'lukas-reineke/indent-blankline.nvim' }
@@ -41,7 +41,6 @@ return require('packer').startup(function(use)
   vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
   -- ========  search through folder ==========
-
 
   --  folder tree
   use { 'kyazdani42/nvim-tree.lua' }
@@ -71,16 +70,28 @@ return require('packer').startup(function(use)
 -- ======== GENERAL PLUGINS =========
 
 -- -------- LINTER AND COMPILERS PLUGINS ---------
-  use { 'williamboman/nvim-lsp-installer' }
-  use { 'neovim/nvim-lspconfig' }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/nvim-cmp' }
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},
+      -- Uncomment these if you want to manage LSP servers from neovim
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
 
-  -- Allows using autocomplete by pressing TAB. Used in lsps.lua
-  use { 'L3MON4D3/LuaSnip', tag = 'v2.0.0', run = 'make install_jsregexp' }
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-nvim-lua'},
+      -- Allows using autocomplete by pressing TAB. Used in lsps.lua
+      {'saadparwaiz1/cmp_luasnip'},
+      -- Allows using autocomplete by pressing TAB. Used in lsps.lua
+      {'L3MON4D3/LuaSnip'},
+    }
+  }
 -- ======== LINTER AND COMPILERS PLUGINS =========
 
 -- -------- LANGUAGE SPECIFIC PLUGINS ---------

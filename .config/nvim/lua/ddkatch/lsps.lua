@@ -1,24 +1,68 @@
-local cmp = require 'cmp'
+local lsp_zero = require('lsp-zero')
+
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "gb", ':e#<cr>', opts) -- go to the previously opened file
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "<leader>=d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "<leader>-d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  -- Replace the language servers listed here
+  -- with the ones you want to install
+  ensure_installed = {
+    'tsserver',
+    'rust_analyzer',
+    "lua_ls",
+    "rust_analyzer",
+    "sorbet"
+  },
+  handlers = {
+    lsp_zero.default_setup,
+  },
+})
+
+lsp_zero.setup()
+
+---
+-- Replace these language servers
+-- with the ones you have installed in your system
+---
+require('lspconfig').lua_ls.setup({})
+require('lspconfig').rust_analyzer.setup({})
+require('lspconfig').sorbet.setup({})
+require('lspconfig').solargraph.setup({})
+require('lspconfig').tsserver.setup({})
+require('lspconfig').tailwindcss.setup({})
+
+
+
+local cmp = require("cmp")
+local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
-  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
@@ -38,42 +82,5 @@ cmp.setup({
         fallback()
       end
     end,
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
-    { name = 'buffer' },
   })
 })
-
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- require('lspconfig').tsserver.setup {
---   capabilities = capabilities
--- }
-
--- local lsp_installer = require('nvim-lsp-installer')
---
--- lsp_installer.on_server_ready(function(server)
---   local opts  = {}
---   server:setup(opts)
--- end)
-
-local map = require('ddkatch.utils').map
-
-map('n', 'gd', ':lua vim.lsp.buf.definition()<cr>')
-map('n', 'gb', ':e#<cr>') -- get back to prev opened file
---map('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>')
---map('n', 'gi', ':lua vim.lsp.buf.implementation()<cr>')
---map('n', 'gw', ':lua vim.lsp.buf.document_symbol()<cr>')
---map('n', 'gw', ':lua vim.lsp.buf.workspace_symbol()<cr>')
---map('n', 'gr', ':lua vim.lsp.buf.references()<cr>')
---map('n', 'gt', ':lua vim.lsp.buf.type_definition()<cr>')
---map('n', 'K', ':lua vim.lsp.buf.hover()<cr>')
---map('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
---map('n', '<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
---map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
