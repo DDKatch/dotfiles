@@ -25,3 +25,6 @@ GRTAGS
 # user info
 .gitconfig
 
+# sorbet ruby LSP
+bin/tapioca
+sorbet/
