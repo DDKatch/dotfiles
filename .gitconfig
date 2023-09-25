@@ -3,7 +3,7 @@
   name = Daniil Kachur
 [core]
   excludesfile = ~/.gitignore_global
-  editor = nvim
+	editor = vim
 [alias]
   co = checkout
   br = branch

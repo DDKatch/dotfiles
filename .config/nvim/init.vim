@@ -40,7 +40,7 @@ endif
 Plug 'kyazdani42/nvim-web-devicons'
 
 "  code highlight
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master'}
 
 " indentation highlight
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -130,7 +130,7 @@ let g:gitblame_date_format = '%r'
 nmap     <C-F>f <Plug>CtrlSFPrompt
 nmap     <C-F>n <Plug>CtrlSFCwordPath
 nmap     <C-F>p <Plug>CtrlSFPwordPath
-let g:ctrlsf_ignore_dir = ['log', 'tmp', 'node_modules', 'public']
+let g:ctrlsf_ignore_dir = ['log', 'tmp', 'node_modules', 'public', '.git', 'public']
 let g:ctrlsf_auto_focus = { "at": "start" }
 
 "  kien/ctrlp.vim
@@ -164,7 +164,13 @@ map <C-T> :CtrlPBuffer<CR>
 "set exrc
 "set secure
 "---------------------------------------
+"
+"-------sudo tee hack-------------------
+":w !sudo tee %
+"---------------------------------------
 
 "====================
 "^  TIPS AND TRICS  ^
 "====================
+
+command! -range FormatJson <line1>,<line2>!xargs -0 -I {} node -e 'console.log(JSON.stringify({}, null, 2));'
