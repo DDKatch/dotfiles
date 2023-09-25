@@ -20,31 +20,24 @@ return require('packer').startup(function(use)
 
   -- --------  search through folder ----------
   -- An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
-  use {
-    'dyng/ctrlsf.vim',
-    config = function() require('git-blame').setup({
-      ctrlsf_ignore_dir = {'log', 'tmp', 'node_modules', 'public', '.git', 'public'},
-      ctrlsf_auto_focus = { at = "start" },
-    }) end
-  }
+  use { 'dyng/ctrlsf.vim' }
   vim.api.nvim_set_keymap('n', "<C-F>f", "<Plug>CtrlSFPrompt", { noremap = true })
   vim.api.nvim_set_keymap('n', "<C-F>n", "<Plug>CtrlSFCwordPath", { noremap = true })
   vim.api.nvim_set_keymap('n', "<C-F>p", "<Plug>CtrlSFPwordPath", { noremap = true })
 
   -- Fuzzy file, buffer, mru, tag, etc finder
   use {
-    'kien/ctrlp.vim',
-    config = function() require('git-blame').setup({
-      ctrlp_map = '<c-p>',
-      ctrlp_cmd = 'CtrlP',
-      ctrlp_working_path_mode = 'ra',
-      ctrlp_match_window_reversed = 0,
-      ctrlp_extensions = {'tag'},
-      ctrlp_custom_ignore = "vendor|node_modules|tmp|DS_Store|.git",
-    }) end
+    'nvim-telescope/telescope.nvim', tag = '0.1.3',
+  -- or                            , branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
-  vim.api.nvim_command("set wildignore+=*/tmp/*,*.so,*.swp,*.zip")
+  local builtin = require('telescope.builtin')
+  vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+  vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+  vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+  vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
   -- ========  search through folder ==========
+
 
   --  folder tree
   use { 'kyazdani42/nvim-tree.lua' }
@@ -58,7 +51,7 @@ return require('packer').startup(function(use)
   -- git
   use {
     'f-person/git-blame.nvim',
-    config = function() require('git-blame').setup({
+    config = function() require('gitblame').setup({
       gitblame_message_template = '         <sha> • <summary> • <author> • <date>',
       gitblame_date_format = '%r',
     }) end
