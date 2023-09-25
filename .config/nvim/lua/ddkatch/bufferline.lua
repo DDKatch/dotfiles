@@ -44,7 +44,7 @@ options = {
 	offsets = {
     {
       filetype = "NvimTree",
-      text = "Nvim Tree", -- "File Explorer" | function 
+      text = "Nvim Tree", -- "File Explorer" | function
       text_align = "left",  -- | "center" | "right"}},
       separator = true
     }

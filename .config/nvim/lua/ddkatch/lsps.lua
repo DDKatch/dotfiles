@@ -56,17 +56,17 @@ cmp.setup({
 --   capabilities = capabilities
 -- }
 
-local lsp_installer = require('nvim-lsp-installer')
-
-lsp_installer.on_server_ready(function(server)
-  local opts  = {}
-  server:setup(opts)
-end)
+-- local lsp_installer = require('nvim-lsp-installer')
+--
+-- lsp_installer.on_server_ready(function(server)
+--   local opts  = {}
+--   server:setup(opts)
+-- end)
 
 local map = require('ddkatch.utils').map
 
-map('n', ']', ':lua vim.lsp.buf.definition()<cr>')
-map('n', '[', ':e#<cr>') -- get back to prev opened file
+map('n', 'gd', ':lua vim.lsp.buf.definition()<cr>')
+map('n', 'gb', ':e#<cr>') -- get back to prev opened file
 --map('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>')
 --map('n', 'gi', ':lua vim.lsp.buf.implementation()<cr>')
 --map('n', 'gw', ':lua vim.lsp.buf.document_symbol()<cr>')
