@@ -1,5 +1,5 @@
-" TODO Migrate to LSP instead of CoC ✅
-" TODO change autocomplete window selected item background color 
+" TODO Migrate to LSPinstead of CoC ✅
+" TODO change autocomplete window selected item background color
 " TODO Add go to definition plugin ✅
 
 " --------------------

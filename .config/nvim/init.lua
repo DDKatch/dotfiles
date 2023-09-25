@@ -1,0 +1,24 @@
+require("ddkatch")
+
+-- ====================
+-- |  TIPS AND TRICS  |
+-- ====================
+--
+-- -----visualize tab with ⇥ symbol-------
+-- -----(tab becomes an actual tab)-------
+-- set list
+-- set listchars=tab:\⇥\ ,trail:·,extends:>,precedes:<,nbsp:+
+-- ---------------------------------------
+--
+-- -----load local dir .vimrc file--------
+-- set exrc
+-- set secure
+-- ---------------------------------------
+--
+-- -------sudo tee hack-------------------
+-- :w !sudo tee %
+-- ---------------------------------------
+--
+-- ====================
+-- ^  TIPS AND TRICS  ^
+-- ====================

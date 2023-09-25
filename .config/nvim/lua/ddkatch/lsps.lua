@@ -63,7 +63,7 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
 end)
 
-local map = require('utils').map
+local map = require('ddkatch.utils').map
 
 map('n', ']', ':lua vim.lsp.buf.definition()<cr>')
 map('n', '[', ':e#<cr>') -- get back to prev opened file
