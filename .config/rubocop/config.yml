@@ -1,0 +1,4 @@
+inherit_gem:
+  datarockets-style:
+    - config/ruby.yml
+    - config/rails.yml
