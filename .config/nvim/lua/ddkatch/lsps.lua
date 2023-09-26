@@ -26,7 +26,6 @@ require('mason-lspconfig').setup({
     'rust_analyzer',
     "lua_ls",
     "rust_analyzer",
-    "sorbet"
   },
   handlers = {
     lsp_zero.default_setup,
@@ -41,10 +40,21 @@ lsp_zero.setup()
 ---
 require('lspconfig').lua_ls.setup({})
 require('lspconfig').rust_analyzer.setup({})
-require('lspconfig').sorbet.setup({})
-require('lspconfig').solargraph.setup({})
 require('lspconfig').tsserver.setup({})
 require('lspconfig').tailwindcss.setup({})
+-- ruby
+require('lspconfig').sorbet.setup({})
+require('lspconfig').solargraph.setup({}) -- go to definition
+----------------------
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.rb" },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+}) -- autocorrect on save
+----------------------
+
+
 
 
 

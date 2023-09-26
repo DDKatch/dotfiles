@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
 
   --  folder tree
   use { 'kyazdani42/nvim-tree.lua' }
-
+  vim.keymap.set('n', '<leader>n', ":NvimTreeOpen<CR>", {})
   --  bottom status line
   use { 'hoob3rt/lualine.nvim', branch = "master" }
 
