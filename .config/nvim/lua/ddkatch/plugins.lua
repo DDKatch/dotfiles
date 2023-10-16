@@ -99,5 +99,7 @@ return require('packer').startup(function(use)
   use { 'fatih/vim-go', cmd = ":GoUpdateBinaries" }
   -- Markdown
   use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
+  -- Ruby
+  use { 'ngmy/vim-rubocop' }
 -- ======== LANGUAGE SPECIFIC PLUGINS =========
 end)
