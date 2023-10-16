@@ -42,8 +42,15 @@ require('lspconfig').rust_analyzer.setup({})
 require('lspconfig').tsserver.setup({})
 require('lspconfig').tailwindcss.setup({})
 -- ruby
-require('lspconfig').sorbet.setup({})
-require('lspconfig').solargraph.setup({}) -- go to definition
+require('lspconfig').solargraph.setup({
+  autoformat = true,
+  completion = true,
+  diagnostic = true,
+  folding = true,
+  references = true,
+  rename = true,
+  symbols = true
+})
 ----------------------
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.rb" },
