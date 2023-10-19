@@ -1,14 +1,7 @@
-require("ddkatch.automatic_trailing_whitespace")
-require("ddkatch.bufferline")
-require("ddkatch.disable-terminal-autoclose")
-require("ddkatch.evil_lualine")
+-- general has to be included first!
 require("ddkatch.general")
-require("ddkatch.indent-blankline")
-require("ddkatch.json")
+
+require("ddkatch.plugins")
+require("ddkatch.tweaks")
+
 require("ddkatch.keymaps")
-require("ddkatch.lsps")
-require("ddkatch.material")
-require("ddkatch.nvim-tree")
-require("ddkatch.nvim-treesitter")
-require('ddkatch.plugins')
-require("ddkatch.utils")
