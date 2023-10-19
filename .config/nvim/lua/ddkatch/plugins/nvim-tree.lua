@@ -8,6 +8,8 @@
 -- Keybindings are defined in `core/keymaps.lua`:
 -- https://github.com/kyazdani42/nvim-tree.lua#keybindings
 
+vim.keymap.set('n', '<leader>n', ":NvimTreeToggle<CR>", {})
+
 local status_ok, nvim_tree = pcall(require, 'nvim-tree')
 if not status_ok then
   return
