@@ -89,5 +89,6 @@ return {
   },
   -- Ruby
   { 'ngmy/vim-rubocop' },
+  { 'RRethy/nvim-treesitter-endwise' },
 -- ======== LANGUAGE SPECIFIC PLUGINS =========
 }
