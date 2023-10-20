@@ -3,6 +3,7 @@ local lsp_zero = require('lsp-zero')
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
+  local opts = {}
   lsp_zero.default_keymaps({buffer = bufnr})
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "gb", ':e#<cr>', opts) -- go to the previously opened file
@@ -33,13 +34,22 @@ require('mason-lspconfig').setup({
 
 lsp_zero.setup()
 
----
--- Replace these language servers
--- with the ones you have installed in your system
----
-require('lspconfig').lua_ls.setup({})
+-- lua
+require('lspconfig').lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+  },
+})
+-- rust
 require('lspconfig').rust_analyzer.setup({})
+-- typescript
 require('lspconfig').tsserver.setup({})
+-- tailwindcss
 require('lspconfig').tailwindcss.setup({})
 -- ruby
 require('lspconfig').solargraph.setup({
@@ -51,6 +61,7 @@ require('lspconfig').solargraph.setup({
   rename = true,
   symbols = true
 })
+
 ----------------------
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.rb" },
@@ -59,10 +70,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   end,
 }) -- autocorrect on save
 ----------------------
-
-
-
-
 
 local cmp = require("cmp")
 local cmp_action = require('lsp-zero').cmp_action()
