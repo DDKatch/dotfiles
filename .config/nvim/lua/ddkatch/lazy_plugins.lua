@@ -11,7 +11,7 @@ return {
   { 'nvim-treesitter/nvim-treesitter', branch = "master" },
 
   -- indentation highlight
-  { 'lukas-reineke/indent-blankline.nvim' },
+  { 'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {} },
 
   -- --------  search through folder ----------
   -- An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
