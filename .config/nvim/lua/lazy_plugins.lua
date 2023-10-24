@@ -90,5 +90,7 @@ return {
   -- Ruby
   { 'ngmy/vim-rubocop' },
   { 'RRethy/nvim-treesitter-endwise' },
+  -- Lua
+  {"bfredl/nvim-luadev"},
 -- ======== LANGUAGE SPECIFIC PLUGINS =========
 }
