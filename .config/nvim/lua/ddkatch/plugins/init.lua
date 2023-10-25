@@ -1,6 +1,7 @@
 require("ddkatch.plugins.bufferline")
 require("ddkatch.plugins.ctrlsf")
 require("ddkatch.plugins.evil_lualine")
+require("ddkatch.plugins.harpoon")
 require("ddkatch.plugins.indent-blankline")
 require("ddkatch.plugins.material")
 require("ddkatch.plugins.nvim-tree")

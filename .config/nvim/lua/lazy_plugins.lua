@@ -23,6 +23,11 @@ return {
   -- or                            , branch = '0.1.x',
     dependencies = { {'nvim-lua/plenary.nvim'} }
   },
+  -- code navigation
+  {
+    'ThePrimeagen/harpoon',
+    dependencies = { { 'nvim-lua/plenary.nvim' } }
+  },
 
   -- ========  search through folder ==========
 
