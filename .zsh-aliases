@@ -7,7 +7,6 @@ alias rr="rake routes"
 alias rrg="rake routes | grep "
 
 # Git
-
 alias g="git"
 alias gs="git status"
 alias ga="git add"
@@ -24,18 +23,8 @@ show_git_branch_changes(){
   vim -o $(git diff --name-only $(git merge-base --fork-point $1))
 }
 
-# Zeus
-alias zs='zeus server'
-alias zr='zeus rake'
-alias zg='zeus generate'
-alias zc='zeus console'
-alias zt='zeus rspec'
-
 # Fix tmux vim color
 alias tmux="TERM=screen-256color-bce tmux"
-
-# Vim
-alias v='vim'
 
 # Sidekiq
 alias flush-sidekiq="echo 'flushdb' | redis-cli"
@@ -48,29 +37,16 @@ alias paralells='sudo rm /Library/Preferences/Parallels/licenses.xml /private/va
 alias cpd="cap production deploy"
 alias csd="cap staging deploy"
 
-# SSH
-alias to-presli-staging="ssh deployer@46.101.178.36"
-alias to-presli-production="ssh -p 2033 deployer@95.213.255.13"
-alias to-diplom-remote="ssh ubuntu@graphene-witness.westeurope.cloudapp.azure.com"
-alias to-czech-aruba="ssh -p 2033 root@94.177.199.7"
-alias to-italy-aruba="ssh -p 2033 itmist@94.177.199.7"
-
 # Grep
 alias mg="grep -R --exclude-dir=log --exclude-dir=tmp --exclude-dir=coverage"
-
-# Change branch for stage deploy
-alias stbr="vim config/deploy/staging.rb"
-alias prr="rvm use 2.2.2@presli"
 
 # Change system time
 alias apr_time="sudo date -s 2017-04-06"
 
-# change stage branch
-alias chsb="vim config/deploy/staging.rb"
-
 #stuff
-alias mpi="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b'"
+alias myipg="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b'"
 
+#TODO reuse these aliases in future
 #docker
 alias dlserv-presli="docker-compose run presli rails server -b 0.0.0.0 -p 3000"
 alias dlcons-presli="docker-compose run presli rails console"
