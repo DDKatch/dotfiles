@@ -65,7 +65,7 @@ alias prr="rvm use 2.2.2@presli"
 # Change system time
 alias apr_time="sudo date -s 2017-04-06"
 
-# change stage branch 
+# change stage branch
 alias chsb="vim config/deploy/staging.rb"
 
 #stuff
@@ -73,7 +73,7 @@ alias mpi="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | grep -oE '\b
 
 #docker
 alias dlserv-presli="docker-compose run presli rails server -b 0.0.0.0 -p 3000"
-alias dlcons-presli="docker-compose run presli rails console" 
+alias dlcons-presli="docker-compose run presli rails console"
 alias dlbash-presli="docker-compose run presli bash"
 alias dlside-presli="docker-compose run presli bundle exec sidekiq"
 alias dlredi-presli="docker-compose run local-redis redis-cli"
@@ -89,4 +89,9 @@ run_tests(){
 #android as cam through ipwebcam app
 alias cam-stream-up="ffmpeg -i http://miwebcam:kekchanskiy@10.0.0.163:8080/video -r 30 -s 1280x720 -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video0"
 alias cam-strem-check="gst-launch-1.0 -vt v4l2src device=/dev/video0 ! xvimagesink"
+
+# delayed job notification - BONG
 alias bong="afplay /System/Library/Sounds/Submarine.aiff -v 3"
+
+# tmux
+alias tns='tmux switchc -t "$(tmux new -dP -s ${PWD##*/})"'
