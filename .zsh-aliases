@@ -71,3 +71,7 @@ alias bong="afplay /System/Library/Sounds/Submarine.aiff -v 3"
 
 # tmux
 alias tns='tmux switchc -t "$(tmux new -dP -s ${PWD##*/})"'
+
+# unix
+alias dts="du -sh -- "
+alias cds="cd ~/Workspace/Sandbox"
