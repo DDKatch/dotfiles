@@ -62,6 +62,7 @@ require('lspconfig').solargraph.setup({
   symbols = true
 })
 
+
 ----------------------
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.rb" },
