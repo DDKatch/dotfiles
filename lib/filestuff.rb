@@ -3,7 +3,7 @@
 module FileStuff
   def hidden_files
     files = Dir['.*']
-    files - %w[. .. .git .gitignore]
+    files - %w[. .. .git .gitignore README.md]
   end
 
   def visible_files
