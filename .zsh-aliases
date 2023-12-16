@@ -1,5 +1,5 @@
 # NeoVim
-alias nvim="/Users/$USER/Workspace/Tools/nvim_env/nvim-macos/bin/nvim"
+alias nvim="/Users/$USER/My_Space/Workspace/Tools/nvim_env/nvim-macos/bin/nvim"
 alias nv="nvim"
 
 # Rails
@@ -74,4 +74,4 @@ alias tns='tmux switchc -t "$(tmux new -dP -s ${PWD##*/})"'
 
 # unix
 alias dts="du -sh -- "
-alias cds="cd ~/Workspace/Sandbox"
+alias cds="cd ~/My_Space/Garage/Sandbox"
