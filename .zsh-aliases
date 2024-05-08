@@ -76,3 +76,9 @@ alias tns='tmux switchc -t "$(tmux new -dP -A -s ${PWD##*/})"'
 alias dts="du -sh -- "
 alias cds="cd ~/My_Space/Garage/Sandbox"
 alias cdw="cd ~/My_Space/Workspace"
+alias cdb="cd ~/My_Space/Public_Office/Business"
+alias cdz="cd ~/My_Space/Private_Office/Zettelkasten"
+alias cdl="cd ~/My_Space/Library"
+
+#rails
+alias mts='ruby -e "puts(Time.now.strftime(\"%Y%m%d%H%M%S\"))"'
