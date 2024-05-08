@@ -53,10 +53,14 @@ require('lspconfig').tsserver.setup({})
 require('lspconfig').tailwindcss.setup({})
 -- ruby
 require('lspconfig').solargraph.setup({
+  -- on_init = function(client)
+  --   client.server_capabilities.documentFormattingProvider = false
+  --   client.server_capabilities.documentFormattingRangeProvider = false
+  -- end,
   autoformat = true,
   completion = true,
   diagnostic = true,
-  folding = true,
+  -- folding = true,
   references = true,
   rename = true,
   symbols = true

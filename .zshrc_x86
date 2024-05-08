@@ -1,0 +1,7 @@
+source "$HOME/.zshrc"
+
+export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/opt/bison/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/bison/lib"
+
+arch -x86_64 zsh
