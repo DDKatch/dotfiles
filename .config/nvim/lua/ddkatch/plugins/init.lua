@@ -1,4 +1,3 @@
-require("ddkatch.plugins.bufferline")
 require("ddkatch.plugins.ctrlsf")
 require("ddkatch.plugins.evil_lualine")
 require("ddkatch.plugins.harpoon")
