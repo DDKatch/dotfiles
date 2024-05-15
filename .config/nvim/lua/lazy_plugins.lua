@@ -28,6 +28,15 @@ return {
     'ThePrimeagen/harpoon',
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   },
+  -- project wide replacements
+  { "stefandtw/quickfix-reflector.vim" },
+  {
+    'gabrielpoca/replacer.nvim',
+    config = function() require('replacer').setup({
+      rename_files = true,
+      save_on_write = true,
+    }) end,
+  },
 
   -- ========  search through folder ==========
 
@@ -35,9 +44,6 @@ return {
   { 'kyazdani42/nvim-tree.lua' },
   --  bottom status line
   { 'hoob3rt/lualine.nvim', branch = "master" },
-
-  --  upper buffers/tabs line
-  { 'akinsho/nvim-bufferline.lua' },
 
   -- git
   {
