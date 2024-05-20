@@ -54,6 +54,11 @@ return {
     }) end
   },
 
+  -- diff view
+  {
+    'sindrets/diffview.nvim'
+  },
+
   -- commenting code
   {
     'numToStr/Comment.nvim',
@@ -89,6 +94,15 @@ return {
 -- ======== LINTER AND COMPILERS PLUGINS =========
 
 -- -------- LANGUAGE SPECIFIC PLUGINS ---------
+  -- CSS
+  {
+    'brenoprata10/nvim-highlight-colors',
+    config = function()
+      require('nvim-highlight-colors').setup({
+        enable_tailwind = true
+      })
+    end
+  },
   -- Golang
   { 'fatih/vim-go' },
   -- Markdown
