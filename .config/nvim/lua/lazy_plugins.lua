@@ -13,6 +13,15 @@ return {
   -- indentation highlight
   { 'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {} },
 
+  -- autoclose braces
+  {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      config = true
+      -- use opts = {} for passing setup options
+      -- this is equalent to setup({}) function
+  },
+
   -- --------  search through folder ----------
   -- An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
   { 'dyng/ctrlsf.vim' },
@@ -90,6 +99,17 @@ return {
       -- Allows using autocomplete by pressing TAB. Used in lsps.lua
       {'L3MON4D3/LuaSnip'},
     }
+  },
+
+  -- error messages highlights
+  {
+   "folke/trouble.nvim",
+   dependencies = { "nvim-tree/nvim-web-devicons" },
+   opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+   },
   },
 -- ======== LINTER AND COMPILERS PLUGINS =========
 
