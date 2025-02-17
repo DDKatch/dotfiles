@@ -20,8 +20,13 @@ if [ -f "$HOME/.zshrc.local" ]; then
 fi
 
 # zlib variables for compilers
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export LDFLAGS="-L/usr/local/opt/openssl@3.2/lib"
 export CPPFLAGS="-I '/usr/local/opt/zlib/include'"
+# It is essential to change the flags with these values
+#   for asdf python install
+# export LDFLAG="-Wl,-rpath,$(brew --prefix openssl@1.1)/lib"
+# export CONFIGURE_OPTS="-with-openssl=$(brew --prefix openssl@1.1)"
+
 # zlib vars for pkg-config
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
@@ -50,4 +55,9 @@ export PGHOST=127.0.0.1
 function __env() {
   printf '%s\n' "${(P)1}"
 }
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="$(brew --prefix) postgresql@16/bin:$PATH"
+export PATH="$(brew --prefix) sqlite/bin:$PATH"
+
+. ~/.asdf/plugins/java/set-java-home.zsh
+
+export REACT_EDITOR=nvi

@@ -4,7 +4,7 @@ lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
   local opts = {}
-  lsp_zero.default_keymaps({buffer = bufnr})
+  lsp_zero.default_keymaps({ buffer = bufnr })
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "gb", ':e#<cr>', opts) -- go to the previously opened file
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -23,8 +23,8 @@ require('mason-lspconfig').setup({
   -- Replace the language servers listed here
   -- with the ones you want to install
   ensure_installed = {
-    'tsserver',
     "lua_ls",
+    "ts_ls",
     "rust_analyzer",
   },
   handlers = {
@@ -34,28 +34,28 @@ require('mason-lspconfig').setup({
 
 lsp_zero.setup()
 
--- lua
 require('lspconfig').lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
     },
   },
 })
 -- rust
 require('lspconfig').rust_analyzer.setup({})
--- typescript
-require('lspconfig').tsserver.setup({})
+-- -- typescript
+-- require('lspconfig').tsserver.setup({})
 -- tailwindcss
 require('lspconfig').tailwindcss.setup({})
 -- ruby
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "solargraph" })
 require('lspconfig').solargraph.setup({
   -- on_init = function(client)
-  --   client.server_capabilities.documentFormattingProvider = false
-  --   client.server_capabilities.documentFormattingRangeProvider = false
+  --   client.server_capabilities.documentFormattingProvider = true
+  --   client.server_capabilities.documentFormattingRangeProvider = true
   -- end,
   autoformat = true,
   completion = true,
