@@ -1,6 +1,6 @@
 [user]
-  email = kachur.daniil@gmail.com
-  name = Daniil Kachur
+	email = kachur.daniil@gmail.com
+	name = Daniil Kachur
 [core]
   excludesfile = ~/.gitignore_global
 	editor = vim
