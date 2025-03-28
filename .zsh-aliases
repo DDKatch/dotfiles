@@ -70,7 +70,9 @@ alias cam-strem-check="gst-launch-1.0 -vt v4l2src device=/dev/video0 ! xvimagesi
 alias bong="afplay /System/Library/Sounds/Submarine.aiff -v 3"
 
 # tmux
-alias tns='tmux switchc -t "$(tmux new -dP -A -s ${PWD##*/})"'
+alias tns='tmux switchc -t "$(tmux new -dP -A -s ${PWD##*/})";\
+tmux new-window -t ${PWD##*/} -n ${PWD##*/};\
+tmux new-window -t ${PWD##*/} -n ${PWD##*/};'
 
 # unix
 alias dts="du -sh -- "
