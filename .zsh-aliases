@@ -5,6 +5,7 @@ alias nv="nvim"
 # Rails
 alias rr="rake routes"
 alias rrg="rake routes | grep "
+alias mts='ruby -e "puts(Time.now.strftime(\"%Y%m%d%H%M%S\"))"' # migration time string
 
 # Git
 alias g="git"
@@ -43,7 +44,6 @@ alias apr_time="sudo date -s 2017-04-06"
 #stuff
 alias myipg="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b'"
 
-#TODO reuse these aliases in future
 #docker
 alias dlserv-presli="docker-compose run presli rails server -b 0.0.0.0 -p 3000"
 alias dlcons-presli="docker-compose run presli rails console"
@@ -80,7 +80,6 @@ alias cdbicw="cd ~/My_Space/Public_Office/Business/IE_Daniil_Kachur/Clients/West
 alias cdz="cd ~/My_Space/Private_Office/Zettelkasten"
 alias cdl="cd ~/My_Space/Library"
 alias cdc="cd ~/My_Space/Private_Office/Cloud"
-alias gitwrap="ruby ~/My_Space/Workspace/Tools/git_hide_reveal/script.rb"
 
-#rails
-alias mts='ruby -e "puts(Time.now.strftime(\"%Y%m%d%H%M%S\"))"'
+#tools
+alias gitwrap="ruby ~/My_Space/Workspace/Tools/git_hide_reveal/script.rb"
