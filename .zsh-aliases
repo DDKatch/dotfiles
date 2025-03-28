@@ -81,6 +81,7 @@ alias cdbicw="cd ~/My_Space/Public_Office/Business/IE_Daniil_Kachur/Clients/West
 alias cdz="cd ~/My_Space/Private_Office/Zettelkasten"
 alias cdl="cd ~/My_Space/Library"
 alias cdc="cd ~/My_Space/Private_Office/Cloud"
+alias gitwrap="ruby ~/My_Space/Workspace/Tools/git_hide_reveal/script.rb"
 
 #rails
 alias mts='ruby -e "puts(Time.now.strftime(\"%Y%m%d%H%M%S\"))"'
