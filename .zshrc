@@ -61,3 +61,5 @@ export PATH="$(brew --prefix) sqlite/bin:$PATH"
 . ~/.asdf/plugins/java/set-java-home.zsh
 
 export REACT_EDITOR=nvi
+
+source ~/.env.global
