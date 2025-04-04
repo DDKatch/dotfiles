@@ -28,3 +28,5 @@ GRTAGS
 # sorbet ruby LSP
 bin/tapioca
 sorbet/
+
+.env.global
