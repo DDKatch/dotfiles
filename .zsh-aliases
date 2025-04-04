@@ -23,7 +23,7 @@ alias gbchanges='show_git_branch_changes()'
 show_git_branch_changes(){
   vim -o $(git diff --name-only $(git merge-base --fork-point $1))
 }
-alias ofwncc="nv -p $(gs --porcelain | ruby -ne 'puts $_.split(" ").last')" # open files with not commited changes
+alias ofwncc="nv -p $(gs --porcelain | ruby -ne 'puts $_.reverse.chop.chop.reverse')" # open files with not commited changes
 
 # Sidekiq
 alias flush-sidekiq="echo 'flushdb' | redis-cli"
