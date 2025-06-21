@@ -63,3 +63,5 @@ export PATH="$(brew --prefix) sqlite/bin:$PATH"
 export REACT_EDITOR=nvi
 
 source ~/.env.global
+
+. "$HOME/.local/bin/env"
