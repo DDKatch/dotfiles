@@ -84,3 +84,4 @@ alias cdc="cd ~/My_Space/Private_Office/Cloud"
 
 #tools
 alias gitwrap="ruby ~/My_Space/Workspace/Tools/git_hide_reveal/script.rb"
+alias rails-new="~/My_Space/Workspace/Tools/rails-new"
