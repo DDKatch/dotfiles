@@ -13,18 +13,43 @@ function use_openai()
   }
 end
 
+function use_proxy_ollama()
+  -- uses local proxy before ollama with anthropic-like behavior to enable tools calling
+  return {
+    claude = {
+      endpoint = "http://127.0.0.1:5055", -- your Sinatra base; Avante will POST /v1/messages
+      api_key_name = "ANTHROPIC_API_KEY", -- Avante insists on this header; value can be anything
+      model = "hhao/qwen2.5-coder-tools:7b",
+      -- you can keep tools enabled (default); our shim handles tool_use/tool_result
+      timeout = 3000,
+    },
+  }
+end
+
+function use_ollama()
+  return {
+    ollama = {
+      endpoint = "http://127.0.0.1:5055", -- Note that there is no /v1 at the end.
+      -- endpoint = "http://127.0.0.1:5050", -- Note that there is no /v1 at the end.
+      -- endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
+      model = "qwen2.5-coder:7b",
+    },
+  }
+end
+
 function use_claude()
   return {
     -- add any opts here
     -- for example
-    provider = "claude",
-    endpoint = "https://api.anthropic.com/v1/messages",
-    model = "claude-3-7-sonnet-20250219", -- your desired model (or use gpt-4o, etc.)
-    api_key = "ANTHROPIC_API_KEY",
-    timeout = 30000,                      -- Timeout in milliseconds, increase this for reasoning models
-    temperature = 0,
-    max_tokens = 8192,                    -- Increase this to include reasoning tokens (for reasoning models)
-    --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+    claude = {
+      endpoint = "https://api.anthropic.com/v1/messages",
+      model = "claude-3-7-sonnet-20250219", -- your desired model (or use gpt-4o, etc.)
+      api_key = "ANTHROPIC_API_KEY",
+      timeout = 30000,                      -- Timeout in milliseconds, increase this for reasoning models
+      temperature = 0,
+      max_tokens = 8192,                    -- Increase this to include reasoning tokens (for reasoning models)
+      --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+    },
   }
 end
 
@@ -33,7 +58,9 @@ function avante_lazy_config()
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
-    opts = use_openai(),
+    opts = {
+      providers = use_proxy_ollama()
+    },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
