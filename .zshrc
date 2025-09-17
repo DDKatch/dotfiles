@@ -64,4 +64,9 @@ export REACT_EDITOR=nvi
 
 source ~/.env.global
 
+# as I remember, it is for -< uv >- python package manager
 . "$HOME/.local/bin/env"
+
+# this is for llvm
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
