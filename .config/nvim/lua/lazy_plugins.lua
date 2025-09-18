@@ -151,7 +151,11 @@ return {
       -- Allows using autocomplete by pressing TAB. Used in lsps.lua
       { 'saadparwaiz1/cmp_luasnip' },
       -- Allows using autocomplete by pressing TAB. Used in lsps.lua
-      { 'L3MON4D3/LuaSnip' },
+      {
+        "L3MON4D3/LuaSnip",
+        version = "v2.4.0",
+        build = "make install_jsregexp",
+      },
     }
   },
 
