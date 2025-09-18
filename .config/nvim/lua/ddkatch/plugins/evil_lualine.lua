@@ -53,7 +53,7 @@ local sectionss = {
       return '▊'
     end,
     color = { fg = colors.blue, gb = colors.blue }, -- Sets highlighting of component
-    padding = 0 -- We don't need space before this
+    padding = 0                                     -- We don't need space before this
   },
   filename = {
     'filename',
@@ -67,7 +67,7 @@ local sectionss = {
     cond = conditions.show_vim_mode,
     left_padding = 0
   },
-  location = { 
+  location = {
     'location',
     cond = conditions.show_location
   },
@@ -77,8 +77,8 @@ local sectionss = {
   },
   diagnostics = {
     'diagnostics',
-    sources = {'nvim_lsp'},
-    symbols = {error = ' ', warn = ' ', info = ' '},
+    sources = { 'nvim_lsp' },
+    symbols = { error = ' ', warn = ' ', info = ' ' },
     color_error = colors.red,
     color_warn = colors.yellow,
     color_info = colors.cyan
@@ -87,7 +87,7 @@ local sectionss = {
     function()
       local msg = 'No Active Lsp'
       local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-      local clients = vim.lsp.get_active_clients()
+      local clients = vim.lsp.get_clients()
       if next(clients) == nil then return msg end
       for _, client in ipairs(clients) do
         local filetypes = client.config.filetypes
@@ -113,7 +113,7 @@ local sectionss = {
       local function format_file_size(file)
         local size = vim.fn.getfsize(file)
         if size <= 0 then return '' end
-        local sufixes = {'b', 'k', 'm', 'g'}
+        local sufixes = { 'b', 'k', 'm', 'g' }
         local i = 1
         while size > 1024 do
           size = size / 1024
@@ -144,7 +144,7 @@ local sectionss = {
   diff = {
     'diff',
     -- Is it me or the symbol for modified us really weird
-    symbols = {added = '', modified = '柳', removed = ''},
+    symbols = { added = '', modified = '柳', removed = '' },
     color_added = colors.green,
     color_modified = colors.orange,
     color_removed = colors.red,
