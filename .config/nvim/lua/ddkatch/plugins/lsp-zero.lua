@@ -25,9 +25,47 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     "lua_ls",        -- Lua
     "rust_analyzer", -- Rust
+    'html',          -- vscode-html-language-server
+    'emmet_ls',      -- emmet-ls
+    'tailwindcss',   -- tailwindcss-language-server (optional, but nice)
   },
   handlers = {
     lsp_zero.default_setup,
+
+    -- Make HTML LSP attach to ERB buffers (ft=eruby)
+    html = function()
+      require('lspconfig').html.setup({
+        filetypes = { 'html', 'eruby' },
+        init_options = {
+          provideFormatter = true,
+          embeddedLanguages = { css = true, javascript = true },
+          configurationSection = { 'html', 'css', 'javascript' },
+        },
+      })
+    end,
+
+    -- Emmet in ERB too
+    emmet_ls = function()
+      require('lspconfig').emmet_ls.setup({
+        filetypes = {
+          'html', 'css', 'scss',
+          'javascriptreact', 'typescriptreact',
+          'eruby',
+        },
+      })
+    end,
+
+    -- Tailwind class support in ERB too (optional)
+    tailwindcss = function()
+      require('lspconfig').tailwindcss.setup({
+        filetypes = {
+          'html', 'eruby',
+          'css', 'scss',
+          'javascript', 'typescript',
+          'javascriptreact', 'typescriptreact',
+        },
+      })
+    end,
   },
   dependencies = {
     { "mason-org/mason.nvim", opts = {} },
