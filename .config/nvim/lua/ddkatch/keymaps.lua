@@ -11,3 +11,9 @@ vim.g.expand_region_text_objects = {
 -- remap $ to go to the last non-blank character of the line
 vim.keymap.set('n', '$', 'g_', { noremap = true, silent = true })
 vim.keymap.set('v', '$', 'g_', { noremap = true, silent = true })
+
+
+
+-- Make <leader>d behave like <C-w>
+vim.keymap.set("n", "<leader>d", "<C-w>", { noremap = true })
+vim.keymap.set("i", "<leader>d", "<C-w>", { noremap = true })
