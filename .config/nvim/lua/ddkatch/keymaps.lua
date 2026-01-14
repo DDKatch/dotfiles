@@ -12,8 +12,5 @@ vim.g.expand_region_text_objects = {
 vim.keymap.set('n', '$', 'g_', { noremap = true, silent = true })
 vim.keymap.set('v', '$', 'g_', { noremap = true, silent = true })
 
-
-
 -- Make <leader>d behave like <C-w>
-vim.keymap.set("n", "<leader>d", "<C-w>", { noremap = true })
-vim.keymap.set("i", "<leader>d", "<C-w>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>d", "<C-w>", { noremap = true })
