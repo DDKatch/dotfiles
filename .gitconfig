@@ -1,9 +1,10 @@
 [user]
-	email = kachur.daniil@gmail.com
-	name = Daniil Kachur
+  email = kachur.daniil@gmail.com
+  name = Daniil Kachur
 [core]
   excludesfile = ~/.gitignore_global
-	editor = vim
+  editor = vim
+  pager = delta
 [alias]
   co = checkout
   br = branch
@@ -14,9 +15,16 @@
   patch="!git format-patch -1 HEAD"
 [diff]
   tool = meld
-[merge]
-  tool = meld
 [difftool]
   prompt = false
 [color]
   ui = true
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+  side-by-side = true
+  line-numbers = true
+[merge]
+  conflictStyle = zdiff3
