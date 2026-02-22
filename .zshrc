@@ -82,5 +82,3 @@ export NVM_DIR="$HOME/.nvm"
 # export CPPFLAGS="-I$(brew --prefix sqlite)/include"
 # export PKG_CONFIG_PATH="$(brew --prefix sqlite)/lib/pkgconfig"
 # export PATH="$(brew --prefix sqlite)/bin:$PATH"
-
-alias my_rubocop='BUNDLE_GEMFILE="$HOME/.ruby-tools/rubocop/Gemfile" bundle exec rubocop -c ~/.config/rubocop/config.yml'
