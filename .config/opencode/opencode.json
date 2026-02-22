@@ -6,6 +6,10 @@
         "glm-5:cloud": {
           "_launch": true,
           "name": "glm-5:cloud"
+        },
+        "kimi-k2.5:cloud": {
+          "_launch": false,
+          "name": "kimi-k2.5:cloud"
         }
       },
       "name": "Ollama (local)",
