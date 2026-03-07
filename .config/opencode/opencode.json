@@ -10,6 +10,14 @@
         "kimi-k2.5:cloud": {
           "_launch": false,
           "name": "kimi-k2.5:cloud"
+        },
+        "qwen3-vl:235b-cloud": {
+          "_launch": false,
+          "name": "qwen3-vl:235b-cloud"
+        },
+        "qwen3-coder-next:cloud": {
+          "_launch": false,
+          "name": "qwen3-coder-next:cloud"
         }
       },
       "name": "Ollama (local)",
