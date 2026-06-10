@@ -4,12 +4,16 @@
     "ollama": {
       "models": {
         "glm-5:cloud": {
-          "_launch": true,
+          "_launch": false,
           "name": "glm-5:cloud"
         },
-        "kimi-k2.5:cloud": {
+        "kimi-k2.6:cloud": {
+          "_launch": true,
+          "name": "kimi-k2.6:cloud"
+        },
+        "gemma4:cloud": {
           "_launch": false,
-          "name": "kimi-k2.5:cloud"
+          "name": "gemma4:cloud"
         },
         "qwen3-vl:235b-cloud": {
           "_launch": false,

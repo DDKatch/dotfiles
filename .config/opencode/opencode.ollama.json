@@ -4,9 +4,17 @@
     "ollama": {
       "models": {
         "glm-5:cloud": {
-          "_launch": true,
+          "_launch":false,
           "name": "glm-5:cloud"
-        }
+        },
+        "kimi-k2.6:cloud": {
+          "_launch":true,
+          "name": "kimi-k2.6:cloud"
+        },
+        "gemma4:31b-cloud": {
+          "_launch": false,
+          "name": "gemma4:31b-cloud"
+        },
       },
       "name": "Ollama (local)",
       "npm": "@ai-sdk/openai-compatible",
