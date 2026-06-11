@@ -32,6 +32,10 @@ require('mason-lspconfig').setup({
   handlers = {
     lsp_zero.default_setup,
 
+    -- Prevent mason-lspconfig from auto-configuring solargraph.
+    -- We configure it manually below with the system binary.
+    solargraph = function() end,
+
     -- Make HTML LSP attach to ERB buffers (ft=eruby)
     html = function()
       require('lspconfig').html.setup({
@@ -91,20 +95,17 @@ require('lspconfig').rust_analyzer.setup({})
 -- require('lspconfig').tsserver.setup({})
 -- tailwindcss
 require('lspconfig').tailwindcss.setup({})
--- ruby
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "solargraph" })
+-- ruby: use system solargraph (0.53.4) instead of mason's broken 0.50.0
+-- to avoid prism gem version conflicts on Ruby 3.2.2 vs 3.4.2
 require('lspconfig').solargraph.setup({
-  -- on_init = function(client)
-  --   client.server_capabilities.documentFormattingProvider = true
-  --   client.server_capabilities.documentFormattingRangeProvider = true
-  -- end,
-  autoformat = true,
-  completion = true,
-  diagnostic = true,
-  -- folding = true,
-  references = true,
-  rename = true,
-  symbols = true
+  cmd = { '/Users/dev/.asdf/installs/ruby/3.4.2/bin/solargraph', 'stdio' },
+  settings = {
+    solargraph = {
+      diagnostics = false,
+      formatting = true,
+    },
+  },
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
 
@@ -112,7 +113,12 @@ require('lspconfig').solargraph.setup({
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.rb" },
   callback = function()
-    vim.lsp.buf.format()
+    local ok, _ = pcall(function()
+      vim.lsp.buf.format({ timeout_ms = 5000 })
+    end)
+    if not ok then
+      vim.notify("Format timed out", vim.log.levels.WARN)
+    end
   end,
 }) -- autocorrect on save
 ----------------------

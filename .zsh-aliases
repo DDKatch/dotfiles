@@ -82,6 +82,12 @@ alias cdz="cd ~/My_Space/Private_Office/Zettelkasten"
 alias cdl="cd ~/My_Space/Library"
 alias cdc="cd ~/My_Space/Private_Office/Cloud"
 
+# find dir in My_Space
+unalias ms_find_dir 2>/dev/null
+ms_find_dir() {
+  fd --type d "$1" ~/My_Space
+}
+
 #tools
 alias gitwrap="ruby ~/My_Space/Workspace/Tools/git_hide_reveal/script.rb"
 alias rails-new="~/My_Space/Workspace/Tools/rails-new"
