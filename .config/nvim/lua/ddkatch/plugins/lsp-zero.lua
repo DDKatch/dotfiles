@@ -110,15 +110,10 @@ require('lspconfig').solargraph.setup({
 
 
 ----------------------
-vim.api.nvim_create_autocmd("BufWritePost", {
+vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.rb" },
   callback = function()
-    local ok, _ = pcall(function()
-      vim.lsp.buf.format({ timeout_ms = 5000 })
-    end)
-    if not ok then
-      vim.notify("Format timed out", vim.log.levels.WARN)
-    end
+    vim.lsp.buf.format({ async = false })
   end,
 }) -- autocorrect on save
 ----------------------
