@@ -7,9 +7,9 @@
           "_launch": false,
           "name": "glm-5:cloud"
         },
-        "kimi-k2.6:cloud": {
+        "kimi-k2.7-code:cloud": {
           "_launch": true,
-          "name": "kimi-k2.6:cloud"
+          "name": "kimi-k2.7-code:cloud"
         },
         "gemma4:cloud": {
           "_launch": false,
