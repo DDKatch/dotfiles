@@ -1,4 +1,5 @@
-.config/karabiner
+.config/karabiner/automatic_backups
+.config/karabiner/assets/complex_modifications
 .config/configstore
 .config/htop/htoprc
 .config/subfinder
