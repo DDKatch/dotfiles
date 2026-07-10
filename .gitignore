@@ -2,6 +2,7 @@
 .config/karabiner/assets/complex_modifications
 .config/configstore
 .config/htop/htoprc
+.config/htop/htop_history
 .config/subfinder
 .config/yarn
 .config/coc
