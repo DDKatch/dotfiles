@@ -31,8 +31,8 @@ export CPPFLAGS="-I '/usr/local/opt/zlib/include'"
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 # attach asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-# . /usr/local/opt/asdf/asdf.sh
+# Old asdf setup script no longer exists in 0.19.0; use shims directly.
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 echo $(arch)
 
 # >>> conda initialize >>>
@@ -55,8 +55,8 @@ export PGHOST=127.0.0.1
 function __env() {
   printf '%s\n' "${(P)1}"
 }
-export PATH="$(brew --prefix) postgresql@16/bin:$PATH"
-export PATH="$(brew --prefix) sqlite/bin:$PATH"
+export PATH="$(brew --prefix postgresql@16)/bin:$PATH"
+export PATH="$(brew --prefix sqlite)/bin:$PATH"
 
 . ~/.asdf/plugins/java/set-java-home.zsh
 
@@ -81,4 +81,7 @@ export NVM_DIR="$HOME/.nvm"
 # export LDFLAGS="-L$(brew --prefix sqlite)/lib"
 # export CPPFLAGS="-I$(brew --prefix sqlite)/include"
 # export PKG_CONFIG_PATH="$(brew --prefix sqlite)/lib/pkgconfig"
-# export PATH="$(brew --prefix sqlite)/bin:$PATH"
+export PATH="$(brew --prefix sqlite)/bin:$PATH"
+
+# Local bin directory for custom scripts
+export PATH="$HOME/bin:$PATH"
