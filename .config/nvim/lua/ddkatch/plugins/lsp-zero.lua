@@ -32,8 +32,12 @@ require('mason-lspconfig').setup({
   handlers = {
     lsp_zero.default_setup,
 
-    -- Prevent mason-lspconfig from auto-configuring solargraph.
-    -- We configure it manually below with the system binary.
+    -- Prevent mason-lspconfig from auto-configuring ruby_lsp.
+    -- We configure it manually below with the asdf shim so it follows the
+    -- project's .tool-versions (e.g. 4.0.5) instead of mason's bundled ruby.
+    ruby_lsp = function() end,
+
+    -- Prevent mason from auto-configuring solargraph; we use the asdf shim below.
     solargraph = function() end,
 
     -- Make HTML LSP attach to ERB buffers (ft=eruby)
@@ -95,14 +99,22 @@ require('lspconfig').rust_analyzer.setup({})
 -- require('lspconfig').tsserver.setup({})
 -- tailwindcss
 require('lspconfig').tailwindcss.setup({})
--- ruby: use system solargraph (0.53.4) instead of mason's broken 0.50.0
--- to avoid prism gem version conflicts on Ruby 3.2.2 vs 3.4.2
+-- ruby: ruby-lsp (Shopify). Uses the asdf shim so it follows the project's
+-- .tool-versions (e.g. 4.0.5), and indexes the project bundle via its own
+-- custom bundle, so `gd` jumps into gem sources out of the box.
+require('lspconfig').ruby_lsp.setup({
+  cmd = { '/Users/dev/.asdf/shims/ruby-lsp' },
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+})
+-- ruby: solargraph for type-aware completion (YARD-based runtime introspection).
+-- Uses the asdf shim so it follows .tool-versions. Handles completion where
+-- ruby-lsp can't (e.g. uri. -> request_uri, host, path).
 require('lspconfig').solargraph.setup({
-  cmd = { '/Users/dev/.asdf/installs/ruby/3.4.2/bin/solargraph', 'stdio' },
+  cmd = { '/Users/dev/.asdf/shims/solargraph', 'stdio' },
   settings = {
     solargraph = {
       diagnostics = false,
-      formatting = true,
+      formatting = false,
     },
   },
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
