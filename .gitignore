@@ -3,6 +3,8 @@
 .config/configstore
 .config/htop/htoprc
 .config/htop/htop_history
+.opencode/
+.config/opencode/skills/graphify/
 .config/subfinder
 .config/yarn
 .config/coc
