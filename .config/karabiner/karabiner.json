@@ -232,12 +232,11 @@
                         ]
                     },
                     {
-                        "description": "Remap section sign (\u00a7) to Ctrl-a. Plus it allows to use !@#$%^\u0026*( as numbers for tmux",
+                        "description": "Remap section sign (§) to Ctrl-a. Plus it allows to use !@#$%^&*( as numbers for tmux",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "grave_accent_and_tilde"
-                                },
+                                "from": { "key_code": "grave_accent_and_tilde" },
+                                "parameters": { "basic.to_delayed_action_delay_milliseconds": 500 },
                                 "to": [
                                     {
                                         "key_code": "a",
@@ -250,9 +249,6 @@
                                         }
                                     }
                                 ],
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 500
-                                },
                                 "to_delayed_action": {
                                     "to_if_canceled": [],
                                     "to_if_invoked": [
@@ -484,7 +480,7 @@
                         ]
                     },
                     {
-                        "description": "Exchange numbers and symbols (1234567890 and !@#$%^\u0026*())",
+                        "description": "Exchange numbers and symbols (1234567890 and !@#$%^&*())",
                         "manipulators": [
                             {
                                 "from": {
@@ -1093,8 +1089,7 @@
                     "to": [{ "key_code": "f7" }]
                 }
             ],
-            "name": "poe2",
-            "selected": false
+            "name": "poe2"
         }
     ]
 }
