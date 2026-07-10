@@ -1,14 +1,25 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "novita-ai/tencent/hy3",
+  "plugin": [
+    "opencode-chat-history-plugin"
+  ],
   "provider": {
+    "novita-ai": {
+      "models": {
+        "tencent/hy3": {
+          "name": "tencent/hy3"
+        }
+      }
+    },
     "ollama": {
       "models": {
-        "glm-5:cloud": {
-          "_launch": false,
-          "name": "glm-5:cloud"
+        "glm-5.2:cloud": {
+          "_launch": true,
+          "name": "glm-5.2:cloud"
         },
         "kimi-k2.7-code:cloud": {
-          "_launch": true,
+          "_launch": false,
           "name": "kimi-k2.7-code:cloud"
         },
         "gemma4:cloud": {

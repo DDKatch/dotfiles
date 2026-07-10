@@ -3,9 +3,9 @@
   "provider": {
     "ollama": {
       "models": {
-        "glm-5:cloud": {
+        "glm-5.2:cloud": {
           "_launch":false,
-          "name": "glm-5:cloud"
+          "name": "glm-5.2:cloud"
         },
         "kimi-k2.7-code:cloud": {
           "_launch":true,
