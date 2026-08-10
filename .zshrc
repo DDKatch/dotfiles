@@ -87,4 +87,6 @@ export PATH="$(brew --prefix sqlite)/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 # Youtube scripts (yt-dlp config, ytafl, yttrans)
-export PATH="$HOME/My_Space/Workspace/Tools/Youtube_Scripts:$PATH"
+if [[ -d "$HOME/My_Space/Workspace/Tools/Youtube_Scripts" ]]; then
+  export PATH="$HOME/My_Space/Workspace/Tools/Youtube_Scripts:$PATH"
+fi
