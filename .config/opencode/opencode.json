@@ -1,14 +1,94 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "novita-ai/tencent/hy3",
+  "model": "ollama/glm-5.2:cloud",
   "plugin": [
     "opencode-chat-history-plugin"
   ],
   "provider": {
     "novita-ai": {
+      "name": "Novita AI",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.novita.ai/v3/openai",
+        "apiKey": "{file:~/.secrets/novita_api_key}"
+      },
       "models": {
         "tencent/hy3": {
-          "name": "tencent/hy3"
+          "name": "tencent/hy3",
+          "reasoning": true,
+          "limit": { "context": 262144, "output": 8192 },
+          "cost": { "input": 1.4, "output": 5.8, "cache_read": 0.35 }
+        },
+        "deepseek/deepseek-v3.1": {
+          "name": "deepseek/deepseek-v3.1",
+          "limit": { "context": 131072, "output": 8192 },
+          "cost": { "input": 2.7, "output": 10.0, "cache_read": 1.35 }
+        },
+        "deepseek/deepseek-r1-0528": {
+          "name": "deepseek/deepseek-r1-0528",
+          "reasoning": true,
+          "limit": { "context": 163840, "output": 8192 },
+          "cost": { "input": 7.0, "output": 25.0, "cache_read": 3.5 }
+        },
+        "deepseek/deepseek-v4-flash": {
+          "name": "deepseek/deepseek-v4-flash",
+          "limit": { "context": 1048576, "output": 8192 },
+          "cost": { "input": 1.4, "output": 2.8, "cache_read": 0.28 }
+        },
+        "qwen/qwen3-coder-next": {
+          "name": "qwen/qwen3-coder-next",
+          "limit": { "context": 262144, "output": 8192 },
+          "cost": { "input": 2.0, "output": 15.0 }
+        },
+        "moonshotai/kimi-k3": {
+          "name": "moonshotai/kimi-k3",
+          "reasoning": true,
+          "limit": { "context": 1048576, "output": 8192 }
+        },
+        "zai-org/glm-5.2": {
+          "name": "zai-org/glm-5.2",
+          "limit": { "context": 262144, "output": 8192 }
+        }
+      }
+    },
+    "novita-proxy": {
+      "name": "Novita AI (local proxy)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:9296/v1"
+      },
+      "models": {
+        "tencent/hy3": {
+          "name": "tencent/hy3",
+          "reasoning": true,
+          "limit": { "context": 262144, "output": 8192 },
+          "cost": { "input": 1.4, "output": 5.8, "cache_read": 0.35 }
+        },
+        "deepseek/deepseek-v3.1": {
+          "name": "deepseek/deepseek-v3.1",
+          "limit": { "context": 131072, "output": 8192 }
+        },
+        "deepseek/deepseek-r1-0528": {
+          "name": "deepseek/deepseek-r1-0528",
+          "reasoning": true,
+          "limit": { "context": 163840, "output": 8192 }
+        },
+        "deepseek/deepseek-v4-flash": {
+          "name": "deepseek/deepseek-v4-flash",
+          "limit": { "context": 1048576, "output": 8192 }
+        },
+        "qwen/qwen3-coder-next": {
+          "name": "qwen/qwen3-coder-next",
+          "limit": { "context": 262144, "output": 8192 }
+        },
+        "moonshotai/kimi-k3": {
+          "name": "moonshotai/kimi-k3",
+          "reasoning": true,
+          "limit": { "context": 1048576, "output": 8192 }
+        },
+        "zai-org/glm-5.2": {
+          "name": "zai-org/glm-5.2",
+          "limit": { "context": 262144, "output": 8192 }
         }
       }
     },
@@ -21,6 +101,14 @@
         "kimi-k2.7-code:cloud": {
           "_launch": false,
           "name": "kimi-k2.7-code:cloud"
+        },
+        "kimi-k3:cloud": {
+          "_launch": false,
+          "name": "kimi-k3:cloud"
+        },
+        "deepseek-v4-flash:0731-cloud": {
+          "_launch": false,
+          "name": "deepseek-v4-flash:0731-cloud"
         },
         "gemma4:cloud": {
           "_launch": false,
@@ -39,6 +127,43 @@
       "npm": "@ai-sdk/openai-compatible",
       "options": {
         "baseURL": "http://127.0.0.1:11434/v1"
+      }
+    }
+  },
+  "mcp": {
+    "serena": {
+      "type": "local",
+      "command": [
+        "/Users/dev/.local/bin/serena",
+        "start-mcp-server",
+        "--context",
+        "ide",
+        "--project-from-cwd"
+      ],
+      "enabled": false,
+      "timeout": 60000
+    },
+    "linear": {
+      "type": "local",
+      "command": [
+        "/Users/dev/.local/bin/linear-mcp"
+      ],
+      "enabled": false,
+      "environment": {
+        "LINEAR_ACCESS_TOKEN": "{file:~/.secrets/linear_access_token}"
+      }
+    },
+    "gitlab": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "gitlab-mcp@1.6.1"
+      ],
+      "enabled": false,
+      "environment": {
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "{file:~/.secrets/gitlab_token}",
+        "GITLAB_API_URL": "https://gitlab.com/api/v4"
       }
     }
   }
