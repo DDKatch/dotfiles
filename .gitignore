@@ -11,3 +11,5 @@
 .config/menus
 .config/wireshark
 .config/bpo
+.config/crush
+.config/opencode/command/
