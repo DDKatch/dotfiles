@@ -88,6 +88,11 @@ ms_find_dir() {
   fd --type d "$1" ~/My_Space
 }
 
+# youtube/transcribe scripts now live in ~/My_Space/Workspace/Tools/Youtube_Scripts (on PATH)
+
+# transcribe audio file(s) with Qwen3-ASR 1.7B into <basename>.txt in current dir.
+# (moved to ~/My_Space/Workspace/Tools/Youtube_Scripts/yttrans)
+
 #tools
 alias gitwrap="ruby ~/My_Space/Workspace/Tools/git_hide_reveal/script.rb"
 alias rails-new="~/My_Space/Workspace/Tools/rails-new"

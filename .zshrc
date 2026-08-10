@@ -85,3 +85,6 @@ export PATH="$(brew --prefix sqlite)/bin:$PATH"
 
 # Local bin directory for custom scripts
 export PATH="$HOME/bin:$PATH"
+
+# Youtube scripts (yt-dlp config, ytafl, yttrans)
+export PATH="$HOME/My_Space/Workspace/Tools/Youtube_Scripts:$PATH"
