@@ -90,3 +90,6 @@ export PATH="$HOME/bin:$PATH"
 if [[ -d "$HOME/My_Space/Workspace/Tools/Youtube_Scripts" ]]; then
   export PATH="$HOME/My_Space/Workspace/Tools/Youtube_Scripts:$PATH"
 fi
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
